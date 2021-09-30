@@ -1,0 +1,3537 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "name": "Argument_Classification.ipynb",
+      "provenance": [],
+      "collapsed_sections": [
+        "R2Ea9clqmrJJ",
+        "VYu9X89Smz5K"
+      ],
+      "machine_shape": "hm"
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    },
+    "accelerator": "TPU",
+    "widgets": {
+      "application/vnd.jupyter.widget-state+json": {
+        "27518ccba5414d1c85dcd144c84a7a30": {
+          "model_module": "@jupyter-widgets/controls",
+          "model_name": "HBoxModel",
+          "state": {
+            "_view_name": "HBoxView",
+            "_dom_classes": [],
+            "_model_name": "HBoxModel",
+            "_view_module": "@jupyter-widgets/controls",
+            "_model_module_version": "1.5.0",
+            "_view_count": null,
+            "_view_module_version": "1.5.0",
+            "box_style": "",
+            "layout": "IPY_MODEL_a830c2c617d04006b9a886d3f392802b",
+            "_model_module": "@jupyter-widgets/controls",
+            "children": [
+              "IPY_MODEL_b52b40fbba024199915c9ed15363917e",
+              "IPY_MODEL_a78f186bc46b4d57a89efbe531a8a474"
+            ]
+          }
+        },
+        "a830c2c617d04006b9a886d3f392802b": {
+          "model_module": "@jupyter-widgets/base",
+          "model_name": "LayoutModel",
+          "state": {
+            "_view_name": "LayoutView",
+            "grid_template_rows": null,
+            "right": null,
+            "justify_content": null,
+            "_view_module": "@jupyter-widgets/base",
+            "overflow": null,
+            "_model_module_version": "1.2.0",
+            "_view_count": null,
+            "flex_flow": null,
+            "width": null,
+            "min_width": null,
+            "border": null,
+            "align_items": null,
+            "bottom": null,
+            "_model_module": "@jupyter-widgets/base",
+            "top": null,
+            "grid_column": null,
+            "overflow_y": null,
+            "overflow_x": null,
+            "grid_auto_flow": null,
+            "grid_area": null,
+            "grid_template_columns": null,
+            "flex": null,
+            "_model_name": "LayoutModel",
+            "justify_items": null,
+            "grid_row": null,
+            "max_height": null,
+            "align_content": null,
+            "visibility": null,
+            "align_self": null,
+            "height": null,
+            "min_height": null,
+            "padding": null,
+            "grid_auto_rows": null,
+            "grid_gap": null,
+            "max_width": null,
+            "order": null,
+            "_view_module_version": "1.2.0",
+            "grid_template_areas": null,
+            "object_position": null,
+            "object_fit": null,
+            "grid_auto_columns": null,
+            "margin": null,
+            "display": null,
+            "left": null
+          }
+        },
+        "b52b40fbba024199915c9ed15363917e": {
+          "model_module": "@jupyter-widgets/controls",
+          "model_name": "FloatProgressModel",
+          "state": {
+            "_view_name": "ProgressView",
+            "style": "IPY_MODEL_8f4a293484c944f2961b5a36eb19eeab",
+            "_dom_classes": [],
+            "description": "Downloading: 100%",
+            "_model_name": "FloatProgressModel",
+            "bar_style": "success",
+            "max": 481,
+            "_view_module": "@jupyter-widgets/controls",
+            "_model_module_version": "1.5.0",
+            "value": 481,
+            "_view_count": null,
+            "_view_module_version": "1.5.0",
+            "orientation": "horizontal",
+            "min": 0,
+            "description_tooltip": null,
+            "_model_module": "@jupyter-widgets/controls",
+            "layout": "IPY_MODEL_3ebed2e210184f66a9395075e5809776"
+          }
+        },
+        "a78f186bc46b4d57a89efbe531a8a474": {
+          "model_module": "@jupyter-widgets/controls",
+          "model_name": "HTMLModel",
+          "state": {
+            "_view_name": "HTMLView",
+            "style": "IPY_MODEL_881afae9695c4021ab3b27a84b9cbed9",
+            "_dom_classes": [],
+            "description": "",
+            "_model_name": "HTMLModel",
+            "placeholder": "​",
+            "_view_module": "@jupyter-widgets/controls",
+            "_model_module_version": "1.5.0",
+            "value": " 481/481 [00:16&lt;00:00, 28.4B/s]",
+            "_view_count": null,
+            "_view_module_version": "1.5.0",
+            "description_tooltip": null,
+            "_model_module": "@jupyter-widgets/controls",
+            "layout": "IPY_MODEL_9be9b70d21fb42388aba3a406baf565d"
+          }
+        },
+        "8f4a293484c944f2961b5a36eb19eeab": {
+          "model_module": "@jupyter-widgets/controls",
+          "model_name": "ProgressStyleModel",
+          "state": {
+            "_view_name": "StyleView",
+            "_model_name": "ProgressStyleModel",
+            "description_width": "initial",
+            "_view_module": "@jupyter-widgets/base",
+            "_model_module_version": "1.5.0",
+            "_view_count": null,
+            "_view_module_version": "1.2.0",
+            "bar_color": null,
+            "_model_module": "@jupyter-widgets/controls"
+          }
+        },
+        "3ebed2e210184f66a9395075e5809776": {
+          "model_module": "@jupyter-widgets/base",
+          "model_name": "LayoutModel",
+          "state": {
+            "_view_name": "LayoutView",
+            "grid_template_rows": null,
+            "right": null,
+            "justify_content": null,
+            "_view_module": "@jupyter-widgets/base",
+            "overflow": null,
+            "_model_module_version": "1.2.0",
+            "_view_count": null,
+            "flex_flow": null,
+            "width": null,
+            "min_width": null,
+            "border": null,
+            "align_items": null,
+            "bottom": null,
+            "_model_module": "@jupyter-widgets/base",
+            "top": null,
+            "grid_column": null,
+            "overflow_y": null,
+            "overflow_x": null,
+            "grid_auto_flow": null,
+            "grid_area": null,
+            "grid_template_columns": null,
+            "flex": null,
+            "_model_name": "LayoutModel",
+            "justify_items": null,
+            "grid_row": null,
+            "max_height": null,
+            "align_content": null,
+            "visibility": null,
+            "align_self": null,
+            "height": null,
+            "min_height": null,
+            "padding": null,
+            "grid_auto_rows": null,
+            "grid_gap": null,
+            "max_width": null,
+            "order": null,
+            "_view_module_version": "1.2.0",
+            "grid_template_areas": null,
+            "object_position": null,
+            "object_fit": null,
+            "grid_auto_columns": null,
+            "margin": null,
+            "display": null,
+            "left": null
+          }
+        },
+        "881afae9695c4021ab3b27a84b9cbed9": {
+          "model_module": "@jupyter-widgets/controls",
+          "model_name": "DescriptionStyleModel",
+          "state": {
+            "_view_name": "StyleView",
+            "_model_name": "DescriptionStyleModel",
+            "description_width": "",
+            "_view_module": "@jupyter-widgets/base",
+            "_model_module_version": "1.5.0",
+            "_view_count": null,
+            "_view_module_version": "1.2.0",
+            "_model_module": "@jupyter-widgets/controls"
+          }
+        },
+        "9be9b70d21fb42388aba3a406baf565d": {
+          "model_module": "@jupyter-widgets/base",
+          "model_name": "LayoutModel",
+          "state": {
+            "_view_name": "LayoutView",
+            "grid_template_rows": null,
+            "right": null,
+            "justify_content": null,
+            "_view_module": "@jupyter-widgets/base",
+            "overflow": null,
+            "_model_module_version": "1.2.0",
+            "_view_count": null,
+            "flex_flow": null,
+            "width": null,
+            "min_width": null,
+            "border": null,
+            "align_items": null,
+            "bottom": null,
+            "_model_module": "@jupyter-widgets/base",
+            "top": null,
+            "grid_column": null,
+            "overflow_y": null,
+            "overflow_x": null,
+            "grid_auto_flow": null,
+            "grid_area": null,
+            "grid_template_columns": null,
+            "flex": null,
+            "_model_name": "LayoutModel",
+            "justify_items": null,
+            "grid_row": null,
+            "max_height": null,
+            "align_content": null,
+            "visibility": null,
+            "align_self": null,
+            "height": null,
+            "min_height": null,
+            "padding": null,
+            "grid_auto_rows": null,
+            "grid_gap": null,
+            "max_width": null,
+            "order": null,
+            "_view_module_version": "1.2.0",
+            "grid_template_areas": null,
+            "object_position": null,
+            "object_fit": null,
+            "grid_auto_columns": null,
+            "margin": null,
+            "display": null,
+            "left": null
+          }
+        },
+        "e4cb811defc844489062b2299c0a656d": {
+          "model_module": "@jupyter-widgets/controls",
+          "model_name": "HBoxModel",
+          "state": {
+            "_view_name": "HBoxView",
+            "_dom_classes": [],
+            "_model_name": "HBoxModel",
+            "_view_module": "@jupyter-widgets/controls",
+            "_model_module_version": "1.5.0",
+            "_view_count": null,
+            "_view_module_version": "1.5.0",
+            "box_style": "",
+            "layout": "IPY_MODEL_098205a6f38e4eefa42fcb42eb9a7608",
+            "_model_module": "@jupyter-widgets/controls",
+            "children": [
+              "IPY_MODEL_4d963b72c9d14a39831bade83a9bf95a",
+              "IPY_MODEL_e04afe30a3014844b5dc48579b94b994"
+            ]
+          }
+        },
+        "098205a6f38e4eefa42fcb42eb9a7608": {
+          "model_module": "@jupyter-widgets/base",
+          "model_name": "LayoutModel",
+          "state": {
+            "_view_name": "LayoutView",
+            "grid_template_rows": null,
+            "right": null,
+            "justify_content": null,
+            "_view_module": "@jupyter-widgets/base",
+            "overflow": null,
+            "_model_module_version": "1.2.0",
+            "_view_count": null,
+            "flex_flow": null,
+            "width": null,
+            "min_width": null,
+            "border": null,
+            "align_items": null,
+            "bottom": null,
+            "_model_module": "@jupyter-widgets/base",
+            "top": null,
+            "grid_column": null,
+            "overflow_y": null,
+            "overflow_x": null,
+            "grid_auto_flow": null,
+            "grid_area": null,
+            "grid_template_columns": null,
+            "flex": null,
+            "_model_name": "LayoutModel",
+            "justify_items": null,
+            "grid_row": null,
+            "max_height": null,
+            "align_content": null,
+            "visibility": null,
+            "align_self": null,
+            "height": null,
+            "min_height": null,
+            "padding": null,
+            "grid_auto_rows": null,
+            "grid_gap": null,
+            "max_width": null,
+            "order": null,
+            "_view_module_version": "1.2.0",
+            "grid_template_areas": null,
+            "object_position": null,
+            "object_fit": null,
+            "grid_auto_columns": null,
+            "margin": null,
+            "display": null,
+            "left": null
+          }
+        },
+        "4d963b72c9d14a39831bade83a9bf95a": {
+          "model_module": "@jupyter-widgets/controls",
+          "model_name": "FloatProgressModel",
+          "state": {
+            "_view_name": "ProgressView",
+            "style": "IPY_MODEL_6476e89ff07f43978f8f3ef5903f0ae5",
+            "_dom_classes": [],
+            "description": "Downloading: 100%",
+            "_model_name": "FloatProgressModel",
+            "bar_style": "success",
+            "max": 501200538,
+            "_view_module": "@jupyter-widgets/controls",
+            "_model_module_version": "1.5.0",
+            "value": 501200538,
+            "_view_count": null,
+            "_view_module_version": "1.5.0",
+            "orientation": "horizontal",
+            "min": 0,
+            "description_tooltip": null,
+            "_model_module": "@jupyter-widgets/controls",
+            "layout": "IPY_MODEL_30972cebf461476f9459ae6aa97419e4"
+          }
+        },
+        "e04afe30a3014844b5dc48579b94b994": {
+          "model_module": "@jupyter-widgets/controls",
+          "model_name": "HTMLModel",
+          "state": {
+            "_view_name": "HTMLView",
+            "style": "IPY_MODEL_73368c975281484f827c3b5ca0b10136",
+            "_dom_classes": [],
+            "description": "",
+            "_model_name": "HTMLModel",
+            "placeholder": "​",
+            "_view_module": "@jupyter-widgets/controls",
+            "_model_module_version": "1.5.0",
+            "value": " 501M/501M [00:16&lt;00:00, 30.2MB/s]",
+            "_view_count": null,
+            "_view_module_version": "1.5.0",
+            "description_tooltip": null,
+            "_model_module": "@jupyter-widgets/controls",
+            "layout": "IPY_MODEL_ab26d9244bdb430092712cbc8e3388d9"
+          }
+        },
+        "6476e89ff07f43978f8f3ef5903f0ae5": {
+          "model_module": "@jupyter-widgets/controls",
+          "model_name": "ProgressStyleModel",
+          "state": {
+            "_view_name": "StyleView",
+            "_model_name": "ProgressStyleModel",
+            "description_width": "initial",
+            "_view_module": "@jupyter-widgets/base",
+            "_model_module_version": "1.5.0",
+            "_view_count": null,
+            "_view_module_version": "1.2.0",
+            "bar_color": null,
+            "_model_module": "@jupyter-widgets/controls"
+          }
+        },
+        "30972cebf461476f9459ae6aa97419e4": {
+          "model_module": "@jupyter-widgets/base",
+          "model_name": "LayoutModel",
+          "state": {
+            "_view_name": "LayoutView",
+            "grid_template_rows": null,
+            "right": null,
+            "justify_content": null,
+            "_view_module": "@jupyter-widgets/base",
+            "overflow": null,
+            "_model_module_version": "1.2.0",
+            "_view_count": null,
+            "flex_flow": null,
+            "width": null,
+            "min_width": null,
+            "border": null,
+            "align_items": null,
+            "bottom": null,
+            "_model_module": "@jupyter-widgets/base",
+            "top": null,
+            "grid_column": null,
+            "overflow_y": null,
+            "overflow_x": null,
+            "grid_auto_flow": null,
+            "grid_area": null,
+            "grid_template_columns": null,
+            "flex": null,
+            "_model_name": "LayoutModel",
+            "justify_items": null,
+            "grid_row": null,
+            "max_height": null,
+            "align_content": null,
+            "visibility": null,
+            "align_self": null,
+            "height": null,
+            "min_height": null,
+            "padding": null,
+            "grid_auto_rows": null,
+            "grid_gap": null,
+            "max_width": null,
+            "order": null,
+            "_view_module_version": "1.2.0",
+            "grid_template_areas": null,
+            "object_position": null,
+            "object_fit": null,
+            "grid_auto_columns": null,
+            "margin": null,
+            "display": null,
+            "left": null
+          }
+        },
+        "73368c975281484f827c3b5ca0b10136": {
+          "model_module": "@jupyter-widgets/controls",
+          "model_name": "DescriptionStyleModel",
+          "state": {
+            "_view_name": "StyleView",
+            "_model_name": "DescriptionStyleModel",
+            "description_width": "",
+            "_view_module": "@jupyter-widgets/base",
+            "_model_module_version": "1.5.0",
+            "_view_count": null,
+            "_view_module_version": "1.2.0",
+            "_model_module": "@jupyter-widgets/controls"
+          }
+        },
+        "ab26d9244bdb430092712cbc8e3388d9": {
+          "model_module": "@jupyter-widgets/base",
+          "model_name": "LayoutModel",
+          "state": {
+            "_view_name": "LayoutView",
+            "grid_template_rows": null,
+            "right": null,
+            "justify_content": null,
+            "_view_module": "@jupyter-widgets/base",
+            "overflow": null,
+            "_model_module_version": "1.2.0",
+            "_view_count": null,
+            "flex_flow": null,
+            "width": null,
+            "min_width": null,
+            "border": null,
+            "align_items": null,
+            "bottom": null,
+            "_model_module": "@jupyter-widgets/base",
+            "top": null,
+            "grid_column": null,
+            "overflow_y": null,
+            "overflow_x": null,
+            "grid_auto_flow": null,
+            "grid_area": null,
+            "grid_template_columns": null,
+            "flex": null,
+            "_model_name": "LayoutModel",
+            "justify_items": null,
+            "grid_row": null,
+            "max_height": null,
+            "align_content": null,
+            "visibility": null,
+            "align_self": null,
+            "height": null,
+            "min_height": null,
+            "padding": null,
+            "grid_auto_rows": null,
+            "grid_gap": null,
+            "max_width": null,
+            "order": null,
+            "_view_module_version": "1.2.0",
+            "grid_template_areas": null,
+            "object_position": null,
+            "object_fit": null,
+            "grid_auto_columns": null,
+            "margin": null,
+            "display": null,
+            "left": null
+          }
+        },
+        "931ab5098d1e475b9a72e7284301df54": {
+          "model_module": "@jupyter-widgets/controls",
+          "model_name": "HBoxModel",
+          "state": {
+            "_view_name": "HBoxView",
+            "_dom_classes": [],
+            "_model_name": "HBoxModel",
+            "_view_module": "@jupyter-widgets/controls",
+            "_model_module_version": "1.5.0",
+            "_view_count": null,
+            "_view_module_version": "1.5.0",
+            "box_style": "",
+            "layout": "IPY_MODEL_e02b010d3d97477fabce59a467cd3119",
+            "_model_module": "@jupyter-widgets/controls",
+            "children": [
+              "IPY_MODEL_843657080b8344558cdd893162aafc4b",
+              "IPY_MODEL_ab46ffc62a914db78a1d8da8e2462ee5"
+            ]
+          }
+        },
+        "e02b010d3d97477fabce59a467cd3119": {
+          "model_module": "@jupyter-widgets/base",
+          "model_name": "LayoutModel",
+          "state": {
+            "_view_name": "LayoutView",
+            "grid_template_rows": null,
+            "right": null,
+            "justify_content": null,
+            "_view_module": "@jupyter-widgets/base",
+            "overflow": null,
+            "_model_module_version": "1.2.0",
+            "_view_count": null,
+            "flex_flow": null,
+            "width": null,
+            "min_width": null,
+            "border": null,
+            "align_items": null,
+            "bottom": null,
+            "_model_module": "@jupyter-widgets/base",
+            "top": null,
+            "grid_column": null,
+            "overflow_y": null,
+            "overflow_x": null,
+            "grid_auto_flow": null,
+            "grid_area": null,
+            "grid_template_columns": null,
+            "flex": null,
+            "_model_name": "LayoutModel",
+            "justify_items": null,
+            "grid_row": null,
+            "max_height": null,
+            "align_content": null,
+            "visibility": null,
+            "align_self": null,
+            "height": null,
+            "min_height": null,
+            "padding": null,
+            "grid_auto_rows": null,
+            "grid_gap": null,
+            "max_width": null,
+            "order": null,
+            "_view_module_version": "1.2.0",
+            "grid_template_areas": null,
+            "object_position": null,
+            "object_fit": null,
+            "grid_auto_columns": null,
+            "margin": null,
+            "display": null,
+            "left": null
+          }
+        },
+        "843657080b8344558cdd893162aafc4b": {
+          "model_module": "@jupyter-widgets/controls",
+          "model_name": "FloatProgressModel",
+          "state": {
+            "_view_name": "ProgressView",
+            "style": "IPY_MODEL_74cabccda38746c291287496bff5f469",
+            "_dom_classes": [],
+            "description": "Downloading: 100%",
+            "_model_name": "FloatProgressModel",
+            "bar_style": "success",
+            "max": 898823,
+            "_view_module": "@jupyter-widgets/controls",
+            "_model_module_version": "1.5.0",
+            "value": 898823,
+            "_view_count": null,
+            "_view_module_version": "1.5.0",
+            "orientation": "horizontal",
+            "min": 0,
+            "description_tooltip": null,
+            "_model_module": "@jupyter-widgets/controls",
+            "layout": "IPY_MODEL_4004d468f67b40f2bb904ca3c4e71b9d"
+          }
+        },
+        "ab46ffc62a914db78a1d8da8e2462ee5": {
+          "model_module": "@jupyter-widgets/controls",
+          "model_name": "HTMLModel",
+          "state": {
+            "_view_name": "HTMLView",
+            "style": "IPY_MODEL_81f584850e764e988c0ad92103e643f9",
+            "_dom_classes": [],
+            "description": "",
+            "_model_name": "HTMLModel",
+            "placeholder": "​",
+            "_view_module": "@jupyter-widgets/controls",
+            "_model_module_version": "1.5.0",
+            "value": " 899k/899k [00:00&lt;00:00, 1.19MB/s]",
+            "_view_count": null,
+            "_view_module_version": "1.5.0",
+            "description_tooltip": null,
+            "_model_module": "@jupyter-widgets/controls",
+            "layout": "IPY_MODEL_d2d4db722e534e149701bb74e98a2f53"
+          }
+        },
+        "74cabccda38746c291287496bff5f469": {
+          "model_module": "@jupyter-widgets/controls",
+          "model_name": "ProgressStyleModel",
+          "state": {
+            "_view_name": "StyleView",
+            "_model_name": "ProgressStyleModel",
+            "description_width": "initial",
+            "_view_module": "@jupyter-widgets/base",
+            "_model_module_version": "1.5.0",
+            "_view_count": null,
+            "_view_module_version": "1.2.0",
+            "bar_color": null,
+            "_model_module": "@jupyter-widgets/controls"
+          }
+        },
+        "4004d468f67b40f2bb904ca3c4e71b9d": {
+          "model_module": "@jupyter-widgets/base",
+          "model_name": "LayoutModel",
+          "state": {
+            "_view_name": "LayoutView",
+            "grid_template_rows": null,
+            "right": null,
+            "justify_content": null,
+            "_view_module": "@jupyter-widgets/base",
+            "overflow": null,
+            "_model_module_version": "1.2.0",
+            "_view_count": null,
+            "flex_flow": null,
+            "width": null,
+            "min_width": null,
+            "border": null,
+            "align_items": null,
+            "bottom": null,
+            "_model_module": "@jupyter-widgets/base",
+            "top": null,
+            "grid_column": null,
+            "overflow_y": null,
+            "overflow_x": null,
+            "grid_auto_flow": null,
+            "grid_area": null,
+            "grid_template_columns": null,
+            "flex": null,
+            "_model_name": "LayoutModel",
+            "justify_items": null,
+            "grid_row": null,
+            "max_height": null,
+            "align_content": null,
+            "visibility": null,
+            "align_self": null,
+            "height": null,
+            "min_height": null,
+            "padding": null,
+            "grid_auto_rows": null,
+            "grid_gap": null,
+            "max_width": null,
+            "order": null,
+            "_view_module_version": "1.2.0",
+            "grid_template_areas": null,
+            "object_position": null,
+            "object_fit": null,
+            "grid_auto_columns": null,
+            "margin": null,
+            "display": null,
+            "left": null
+          }
+        },
+        "81f584850e764e988c0ad92103e643f9": {
+          "model_module": "@jupyter-widgets/controls",
+          "model_name": "DescriptionStyleModel",
+          "state": {
+            "_view_name": "StyleView",
+            "_model_name": "DescriptionStyleModel",
+            "description_width": "",
+            "_view_module": "@jupyter-widgets/base",
+            "_model_module_version": "1.5.0",
+            "_view_count": null,
+            "_view_module_version": "1.2.0",
+            "_model_module": "@jupyter-widgets/controls"
+          }
+        },
+        "d2d4db722e534e149701bb74e98a2f53": {
+          "model_module": "@jupyter-widgets/base",
+          "model_name": "LayoutModel",
+          "state": {
+            "_view_name": "LayoutView",
+            "grid_template_rows": null,
+            "right": null,
+            "justify_content": null,
+            "_view_module": "@jupyter-widgets/base",
+            "overflow": null,
+            "_model_module_version": "1.2.0",
+            "_view_count": null,
+            "flex_flow": null,
+            "width": null,
+            "min_width": null,
+            "border": null,
+            "align_items": null,
+            "bottom": null,
+            "_model_module": "@jupyter-widgets/base",
+            "top": null,
+            "grid_column": null,
+            "overflow_y": null,
+            "overflow_x": null,
+            "grid_auto_flow": null,
+            "grid_area": null,
+            "grid_template_columns": null,
+            "flex": null,
+            "_model_name": "LayoutModel",
+            "justify_items": null,
+            "grid_row": null,
+            "max_height": null,
+            "align_content": null,
+            "visibility": null,
+            "align_self": null,
+            "height": null,
+            "min_height": null,
+            "padding": null,
+            "grid_auto_rows": null,
+            "grid_gap": null,
+            "max_width": null,
+            "order": null,
+            "_view_module_version": "1.2.0",
+            "grid_template_areas": null,
+            "object_position": null,
+            "object_fit": null,
+            "grid_auto_columns": null,
+            "margin": null,
+            "display": null,
+            "left": null
+          }
+        },
+        "4a1f19024c9842718655a1834f175b26": {
+          "model_module": "@jupyter-widgets/controls",
+          "model_name": "HBoxModel",
+          "state": {
+            "_view_name": "HBoxView",
+            "_dom_classes": [],
+            "_model_name": "HBoxModel",
+            "_view_module": "@jupyter-widgets/controls",
+            "_model_module_version": "1.5.0",
+            "_view_count": null,
+            "_view_module_version": "1.5.0",
+            "box_style": "",
+            "layout": "IPY_MODEL_4f9a4b19879e45f895c7c1f86a68e5f6",
+            "_model_module": "@jupyter-widgets/controls",
+            "children": [
+              "IPY_MODEL_046905eee5bc4e5ca1e47a36de4327ab",
+              "IPY_MODEL_3440c807d97046058566c168199ce03f"
+            ]
+          }
+        },
+        "4f9a4b19879e45f895c7c1f86a68e5f6": {
+          "model_module": "@jupyter-widgets/base",
+          "model_name": "LayoutModel",
+          "state": {
+            "_view_name": "LayoutView",
+            "grid_template_rows": null,
+            "right": null,
+            "justify_content": null,
+            "_view_module": "@jupyter-widgets/base",
+            "overflow": null,
+            "_model_module_version": "1.2.0",
+            "_view_count": null,
+            "flex_flow": null,
+            "width": null,
+            "min_width": null,
+            "border": null,
+            "align_items": null,
+            "bottom": null,
+            "_model_module": "@jupyter-widgets/base",
+            "top": null,
+            "grid_column": null,
+            "overflow_y": null,
+            "overflow_x": null,
+            "grid_auto_flow": null,
+            "grid_area": null,
+            "grid_template_columns": null,
+            "flex": null,
+            "_model_name": "LayoutModel",
+            "justify_items": null,
+            "grid_row": null,
+            "max_height": null,
+            "align_content": null,
+            "visibility": null,
+            "align_self": null,
+            "height": null,
+            "min_height": null,
+            "padding": null,
+            "grid_auto_rows": null,
+            "grid_gap": null,
+            "max_width": null,
+            "order": null,
+            "_view_module_version": "1.2.0",
+            "grid_template_areas": null,
+            "object_position": null,
+            "object_fit": null,
+            "grid_auto_columns": null,
+            "margin": null,
+            "display": null,
+            "left": null
+          }
+        },
+        "046905eee5bc4e5ca1e47a36de4327ab": {
+          "model_module": "@jupyter-widgets/controls",
+          "model_name": "FloatProgressModel",
+          "state": {
+            "_view_name": "ProgressView",
+            "style": "IPY_MODEL_54877e93cef74a7aa45cef28866ad080",
+            "_dom_classes": [],
+            "description": "Downloading: 100%",
+            "_model_name": "FloatProgressModel",
+            "bar_style": "success",
+            "max": 456318,
+            "_view_module": "@jupyter-widgets/controls",
+            "_model_module_version": "1.5.0",
+            "value": 456318,
+            "_view_count": null,
+            "_view_module_version": "1.5.0",
+            "orientation": "horizontal",
+            "min": 0,
+            "description_tooltip": null,
+            "_model_module": "@jupyter-widgets/controls",
+            "layout": "IPY_MODEL_91a1a8dd42784326bf9cd474aa342440"
+          }
+        },
+        "3440c807d97046058566c168199ce03f": {
+          "model_module": "@jupyter-widgets/controls",
+          "model_name": "HTMLModel",
+          "state": {
+            "_view_name": "HTMLView",
+            "style": "IPY_MODEL_0b9cc571c9d2491887e892655cc8fa37",
+            "_dom_classes": [],
+            "description": "",
+            "_model_name": "HTMLModel",
+            "placeholder": "​",
+            "_view_module": "@jupyter-widgets/controls",
+            "_model_module_version": "1.5.0",
+            "value": " 456k/456k [00:00&lt;00:00, 1.24MB/s]",
+            "_view_count": null,
+            "_view_module_version": "1.5.0",
+            "description_tooltip": null,
+            "_model_module": "@jupyter-widgets/controls",
+            "layout": "IPY_MODEL_2dac63d21a50417baff336dfc9ac86a0"
+          }
+        },
+        "54877e93cef74a7aa45cef28866ad080": {
+          "model_module": "@jupyter-widgets/controls",
+          "model_name": "ProgressStyleModel",
+          "state": {
+            "_view_name": "StyleView",
+            "_model_name": "ProgressStyleModel",
+            "description_width": "initial",
+            "_view_module": "@jupyter-widgets/base",
+            "_model_module_version": "1.5.0",
+            "_view_count": null,
+            "_view_module_version": "1.2.0",
+            "bar_color": null,
+            "_model_module": "@jupyter-widgets/controls"
+          }
+        },
+        "91a1a8dd42784326bf9cd474aa342440": {
+          "model_module": "@jupyter-widgets/base",
+          "model_name": "LayoutModel",
+          "state": {
+            "_view_name": "LayoutView",
+            "grid_template_rows": null,
+            "right": null,
+            "justify_content": null,
+            "_view_module": "@jupyter-widgets/base",
+            "overflow": null,
+            "_model_module_version": "1.2.0",
+            "_view_count": null,
+            "flex_flow": null,
+            "width": null,
+            "min_width": null,
+            "border": null,
+            "align_items": null,
+            "bottom": null,
+            "_model_module": "@jupyter-widgets/base",
+            "top": null,
+            "grid_column": null,
+            "overflow_y": null,
+            "overflow_x": null,
+            "grid_auto_flow": null,
+            "grid_area": null,
+            "grid_template_columns": null,
+            "flex": null,
+            "_model_name": "LayoutModel",
+            "justify_items": null,
+            "grid_row": null,
+            "max_height": null,
+            "align_content": null,
+            "visibility": null,
+            "align_self": null,
+            "height": null,
+            "min_height": null,
+            "padding": null,
+            "grid_auto_rows": null,
+            "grid_gap": null,
+            "max_width": null,
+            "order": null,
+            "_view_module_version": "1.2.0",
+            "grid_template_areas": null,
+            "object_position": null,
+            "object_fit": null,
+            "grid_auto_columns": null,
+            "margin": null,
+            "display": null,
+            "left": null
+          }
+        },
+        "0b9cc571c9d2491887e892655cc8fa37": {
+          "model_module": "@jupyter-widgets/controls",
+          "model_name": "DescriptionStyleModel",
+          "state": {
+            "_view_name": "StyleView",
+            "_model_name": "DescriptionStyleModel",
+            "description_width": "",
+            "_view_module": "@jupyter-widgets/base",
+            "_model_module_version": "1.5.0",
+            "_view_count": null,
+            "_view_module_version": "1.2.0",
+            "_model_module": "@jupyter-widgets/controls"
+          }
+        },
+        "2dac63d21a50417baff336dfc9ac86a0": {
+          "model_module": "@jupyter-widgets/base",
+          "model_name": "LayoutModel",
+          "state": {
+            "_view_name": "LayoutView",
+            "grid_template_rows": null,
+            "right": null,
+            "justify_content": null,
+            "_view_module": "@jupyter-widgets/base",
+            "overflow": null,
+            "_model_module_version": "1.2.0",
+            "_view_count": null,
+            "flex_flow": null,
+            "width": null,
+            "min_width": null,
+            "border": null,
+            "align_items": null,
+            "bottom": null,
+            "_model_module": "@jupyter-widgets/base",
+            "top": null,
+            "grid_column": null,
+            "overflow_y": null,
+            "overflow_x": null,
+            "grid_auto_flow": null,
+            "grid_area": null,
+            "grid_template_columns": null,
+            "flex": null,
+            "_model_name": "LayoutModel",
+            "justify_items": null,
+            "grid_row": null,
+            "max_height": null,
+            "align_content": null,
+            "visibility": null,
+            "align_self": null,
+            "height": null,
+            "min_height": null,
+            "padding": null,
+            "grid_auto_rows": null,
+            "grid_gap": null,
+            "max_width": null,
+            "order": null,
+            "_view_module_version": "1.2.0",
+            "grid_template_areas": null,
+            "object_position": null,
+            "object_fit": null,
+            "grid_auto_columns": null,
+            "margin": null,
+            "display": null,
+            "left": null
+          }
+        },
+        "74896149ce23468981574139d9ab5d9a": {
+          "model_module": "@jupyter-widgets/controls",
+          "model_name": "HBoxModel",
+          "state": {
+            "_view_name": "HBoxView",
+            "_dom_classes": [],
+            "_model_name": "HBoxModel",
+            "_view_module": "@jupyter-widgets/controls",
+            "_model_module_version": "1.5.0",
+            "_view_count": null,
+            "_view_module_version": "1.5.0",
+            "box_style": "",
+            "layout": "IPY_MODEL_e94ab601c2b54d829f390baad5186f3d",
+            "_model_module": "@jupyter-widgets/controls",
+            "children": [
+              "IPY_MODEL_35567782199842d1bc9eca004c1fd87a",
+              "IPY_MODEL_3f0134b2f81c4ccbb13c2d084565e43c"
+            ]
+          }
+        },
+        "e94ab601c2b54d829f390baad5186f3d": {
+          "model_module": "@jupyter-widgets/base",
+          "model_name": "LayoutModel",
+          "state": {
+            "_view_name": "LayoutView",
+            "grid_template_rows": null,
+            "right": null,
+            "justify_content": null,
+            "_view_module": "@jupyter-widgets/base",
+            "overflow": null,
+            "_model_module_version": "1.2.0",
+            "_view_count": null,
+            "flex_flow": null,
+            "width": null,
+            "min_width": null,
+            "border": null,
+            "align_items": null,
+            "bottom": null,
+            "_model_module": "@jupyter-widgets/base",
+            "top": null,
+            "grid_column": null,
+            "overflow_y": null,
+            "overflow_x": null,
+            "grid_auto_flow": null,
+            "grid_area": null,
+            "grid_template_columns": null,
+            "flex": null,
+            "_model_name": "LayoutModel",
+            "justify_items": null,
+            "grid_row": null,
+            "max_height": null,
+            "align_content": null,
+            "visibility": null,
+            "align_self": null,
+            "height": null,
+            "min_height": null,
+            "padding": null,
+            "grid_auto_rows": null,
+            "grid_gap": null,
+            "max_width": null,
+            "order": null,
+            "_view_module_version": "1.2.0",
+            "grid_template_areas": null,
+            "object_position": null,
+            "object_fit": null,
+            "grid_auto_columns": null,
+            "margin": null,
+            "display": null,
+            "left": null
+          }
+        },
+        "35567782199842d1bc9eca004c1fd87a": {
+          "model_module": "@jupyter-widgets/controls",
+          "model_name": "FloatProgressModel",
+          "state": {
+            "_view_name": "ProgressView",
+            "style": "IPY_MODEL_5259a6bcefdc42059df653c07562dd57",
+            "_dom_classes": [],
+            "description": "Downloading: 100%",
+            "_model_name": "FloatProgressModel",
+            "bar_style": "success",
+            "max": 1355863,
+            "_view_module": "@jupyter-widgets/controls",
+            "_model_module_version": "1.5.0",
+            "value": 1355863,
+            "_view_count": null,
+            "_view_module_version": "1.5.0",
+            "orientation": "horizontal",
+            "min": 0,
+            "description_tooltip": null,
+            "_model_module": "@jupyter-widgets/controls",
+            "layout": "IPY_MODEL_80a6f13efd424b30844f770dff1d978c"
+          }
+        },
+        "3f0134b2f81c4ccbb13c2d084565e43c": {
+          "model_module": "@jupyter-widgets/controls",
+          "model_name": "HTMLModel",
+          "state": {
+            "_view_name": "HTMLView",
+            "style": "IPY_MODEL_77e47cc1962b470b85cdeaebede18df4",
+            "_dom_classes": [],
+            "description": "",
+            "_model_name": "HTMLModel",
+            "placeholder": "​",
+            "_view_module": "@jupyter-widgets/controls",
+            "_model_module_version": "1.5.0",
+            "value": " 1.36M/1.36M [00:04&lt;00:00, 302kB/s]",
+            "_view_count": null,
+            "_view_module_version": "1.5.0",
+            "description_tooltip": null,
+            "_model_module": "@jupyter-widgets/controls",
+            "layout": "IPY_MODEL_50de492889414bbf9a2ed9ea0a8ed60d"
+          }
+        },
+        "5259a6bcefdc42059df653c07562dd57": {
+          "model_module": "@jupyter-widgets/controls",
+          "model_name": "ProgressStyleModel",
+          "state": {
+            "_view_name": "StyleView",
+            "_model_name": "ProgressStyleModel",
+            "description_width": "initial",
+            "_view_module": "@jupyter-widgets/base",
+            "_model_module_version": "1.5.0",
+            "_view_count": null,
+            "_view_module_version": "1.2.0",
+            "bar_color": null,
+            "_model_module": "@jupyter-widgets/controls"
+          }
+        },
+        "80a6f13efd424b30844f770dff1d978c": {
+          "model_module": "@jupyter-widgets/base",
+          "model_name": "LayoutModel",
+          "state": {
+            "_view_name": "LayoutView",
+            "grid_template_rows": null,
+            "right": null,
+            "justify_content": null,
+            "_view_module": "@jupyter-widgets/base",
+            "overflow": null,
+            "_model_module_version": "1.2.0",
+            "_view_count": null,
+            "flex_flow": null,
+            "width": null,
+            "min_width": null,
+            "border": null,
+            "align_items": null,
+            "bottom": null,
+            "_model_module": "@jupyter-widgets/base",
+            "top": null,
+            "grid_column": null,
+            "overflow_y": null,
+            "overflow_x": null,
+            "grid_auto_flow": null,
+            "grid_area": null,
+            "grid_template_columns": null,
+            "flex": null,
+            "_model_name": "LayoutModel",
+            "justify_items": null,
+            "grid_row": null,
+            "max_height": null,
+            "align_content": null,
+            "visibility": null,
+            "align_self": null,
+            "height": null,
+            "min_height": null,
+            "padding": null,
+            "grid_auto_rows": null,
+            "grid_gap": null,
+            "max_width": null,
+            "order": null,
+            "_view_module_version": "1.2.0",
+            "grid_template_areas": null,
+            "object_position": null,
+            "object_fit": null,
+            "grid_auto_columns": null,
+            "margin": null,
+            "display": null,
+            "left": null
+          }
+        },
+        "77e47cc1962b470b85cdeaebede18df4": {
+          "model_module": "@jupyter-widgets/controls",
+          "model_name": "DescriptionStyleModel",
+          "state": {
+            "_view_name": "StyleView",
+            "_model_name": "DescriptionStyleModel",
+            "description_width": "",
+            "_view_module": "@jupyter-widgets/base",
+            "_model_module_version": "1.5.0",
+            "_view_count": null,
+            "_view_module_version": "1.2.0",
+            "_model_module": "@jupyter-widgets/controls"
+          }
+        },
+        "50de492889414bbf9a2ed9ea0a8ed60d": {
+          "model_module": "@jupyter-widgets/base",
+          "model_name": "LayoutModel",
+          "state": {
+            "_view_name": "LayoutView",
+            "grid_template_rows": null,
+            "right": null,
+            "justify_content": null,
+            "_view_module": "@jupyter-widgets/base",
+            "overflow": null,
+            "_model_module_version": "1.2.0",
+            "_view_count": null,
+            "flex_flow": null,
+            "width": null,
+            "min_width": null,
+            "border": null,
+            "align_items": null,
+            "bottom": null,
+            "_model_module": "@jupyter-widgets/base",
+            "top": null,
+            "grid_column": null,
+            "overflow_y": null,
+            "overflow_x": null,
+            "grid_auto_flow": null,
+            "grid_area": null,
+            "grid_template_columns": null,
+            "flex": null,
+            "_model_name": "LayoutModel",
+            "justify_items": null,
+            "grid_row": null,
+            "max_height": null,
+            "align_content": null,
+            "visibility": null,
+            "align_self": null,
+            "height": null,
+            "min_height": null,
+            "padding": null,
+            "grid_auto_rows": null,
+            "grid_gap": null,
+            "max_width": null,
+            "order": null,
+            "_view_module_version": "1.2.0",
+            "grid_template_areas": null,
+            "object_position": null,
+            "object_fit": null,
+            "grid_auto_columns": null,
+            "margin": null,
+            "display": null,
+            "left": null
+          }
+        }
+      }
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "aDVD4kpZFhKl"
+      },
+      "source": [
+        "### Initialisation"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "NXx_zfZHFqbF",
+        "outputId": "3b8bff2c-2c11-4e26-e51a-59e4101910b4"
+      },
+      "source": [
+        "!pip install flair\n",
+        "!pip install yellowbrick\n",
+        "!pip install keras\n",
+        "!pip install sentence-transformers\n",
+        "!pip install keras\n",
+        "!pip install tensorflow"
+      ],
+      "execution_count": 1,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "Collecting flair\n",
+            "\u001b[?25l  Downloading https://files.pythonhosted.org/packages/f0/3a/1b46a0220d6176b22bcb9336619d1731301bc2c75fa926a9ef953e6e4d58/flair-0.8.0.post1-py3-none-any.whl (284kB)\n",
+            "\u001b[K     |████████████████████████████████| 286kB 6.9MB/s \n",
+            "\u001b[?25hRequirement already satisfied: tabulate in /usr/local/lib/python3.7/dist-packages (from flair) (0.8.9)\n",
+            "Collecting mpld3==0.3\n",
+            "\u001b[?25l  Downloading https://files.pythonhosted.org/packages/91/95/a52d3a83d0a29ba0d6898f6727e9858fe7a43f6c2ce81a5fe7e05f0f4912/mpld3-0.3.tar.gz (788kB)\n",
+            "\u001b[K     |████████████████████████████████| 798kB 9.6MB/s \n",
+            "\u001b[?25hCollecting ftfy\n",
+            "\u001b[?25l  Downloading https://files.pythonhosted.org/packages/ce/b5/5da463f9c7823e0e575e9908d004e2af4b36efa8d02d3d6dad57094fcb11/ftfy-6.0.1.tar.gz (63kB)\n",
+            "\u001b[K     |████████████████████████████████| 71kB 7.2MB/s \n",
+            "\u001b[?25hCollecting transformers>=4.0.0\n",
+            "\u001b[?25l  Downloading https://files.pythonhosted.org/packages/d5/43/cfe4ee779bbd6a678ac6a97c5a5cdeb03c35f9eaebbb9720b036680f9a2d/transformers-4.6.1-py3-none-any.whl (2.2MB)\n",
+            "\u001b[K     |████████████████████████████████| 2.3MB 16.4MB/s \n",
+            "\u001b[?25hCollecting deprecated>=1.2.4\n",
+            "  Downloading https://files.pythonhosted.org/packages/fb/73/994edfcba74443146c84b91921fcc269374354118d4f452fb0c54c1cbb12/Deprecated-1.2.12-py2.py3-none-any.whl\n",
+            "Requirement already satisfied: lxml in /usr/local/lib/python3.7/dist-packages (from flair) (4.2.6)\n",
+            "Collecting janome\n",
+            "\u001b[?25l  Downloading https://files.pythonhosted.org/packages/a8/63/98858cbead27df7536c7e300c169da0999e9704d02220dc6700b804eeff0/Janome-0.4.1-py2.py3-none-any.whl (19.7MB)\n",
+            "\u001b[K     |████████████████████████████████| 19.7MB 373kB/s \n",
+            "\u001b[?25hRequirement already satisfied: scikit-learn>=0.21.3 in /usr/local/lib/python3.7/dist-packages (from flair) (0.22.2.post1)\n",
+            "Collecting langdetect\n",
+            "\u001b[?25l  Downloading https://files.pythonhosted.org/packages/0e/72/a3add0e4eec4eb9e2569554f7c70f4a3c27712f40e3284d483e88094cc0e/langdetect-1.0.9.tar.gz (981kB)\n",
+            "\u001b[K     |████████████████████████████████| 983kB 50.8MB/s \n",
+            "\u001b[?25hCollecting torch<=1.7.1,>=1.5.0\n",
+            "\u001b[?25l  Downloading https://files.pythonhosted.org/packages/90/5d/095ddddc91c8a769a68c791c019c5793f9c4456a688ddd235d6670924ecb/torch-1.7.1-cp37-cp37m-manylinux1_x86_64.whl (776.8MB)\n",
+            "\u001b[K     |████████████████████████████████| 776.8MB 21kB/s \n",
+            "\u001b[?25hRequirement already satisfied: matplotlib>=2.2.3 in /usr/local/lib/python3.7/dist-packages (from flair) (3.2.2)\n",
+            "Requirement already satisfied: regex in /usr/local/lib/python3.7/dist-packages (from flair) (2019.12.20)\n",
+            "Collecting sqlitedict>=1.6.0\n",
+            "  Downloading https://files.pythonhosted.org/packages/5c/2d/b1d99e9ad157dd7de9cd0d36a8a5876b13b55e4b75f7498bc96035fb4e96/sqlitedict-1.7.0.tar.gz\n",
+            "Requirement already satisfied: numpy<1.20.0 in /usr/local/lib/python3.7/dist-packages (from flair) (1.19.5)\n",
+            "Collecting huggingface-hub\n",
+            "  Downloading https://files.pythonhosted.org/packages/32/a1/7c5261396da23ec364e296a4fb8a1cd6a5a2ff457215c6447038f18c0309/huggingface_hub-0.0.9-py3-none-any.whl\n",
+            "Collecting konoha<5.0.0,>=4.0.0\n",
+            "  Downloading https://files.pythonhosted.org/packages/02/be/4dd30d56a0a19619deb9bf41ba8202709fa83b1b301b876572cd6dc38117/konoha-4.6.4-py3-none-any.whl\n",
+            "Requirement already satisfied: gensim<=3.8.3,>=3.4.0 in /usr/local/lib/python3.7/dist-packages (from flair) (3.6.0)\n",
+            "Collecting gdown==3.12.2\n",
+            "  Downloading https://files.pythonhosted.org/packages/50/21/92c3cfe56f5c0647145c4b0083d0733dd4890a057eb100a8eeddf949ffe9/gdown-3.12.2.tar.gz\n",
+            "  Installing build dependencies ... \u001b[?25l\u001b[?25hdone\n",
+            "  Getting requirements to build wheel ... \u001b[?25l\u001b[?25hdone\n",
+            "    Preparing wheel metadata ... \u001b[?25l\u001b[?25hdone\n",
+            "Collecting segtok>=1.5.7\n",
+            "  Downloading https://files.pythonhosted.org/packages/41/08/582dab5f4b1d5ca23bc6927b4bb977c8ff7f3a87a3b98844ef833e2f5623/segtok-1.5.10.tar.gz\n",
+            "Collecting bpemb>=0.3.2\n",
+            "  Downloading https://files.pythonhosted.org/packages/f2/6f/9191b85109772636a8f8accb122900c34db26c091d2793218aa94954524c/bpemb-0.3.3-py3-none-any.whl\n",
+            "Requirement already satisfied: tqdm>=4.26.0 in /usr/local/lib/python3.7/dist-packages (from flair) (4.41.1)\n",
+            "Collecting sentencepiece==0.1.95\n",
+            "\u001b[?25l  Downloading https://files.pythonhosted.org/packages/f5/99/e0808cb947ba10f575839c43e8fafc9cc44e4a7a2c8f79c60db48220a577/sentencepiece-0.1.95-cp37-cp37m-manylinux2014_x86_64.whl (1.2MB)\n",
+            "\u001b[K     |████████████████████████████████| 1.2MB 49.7MB/s \n",
+            "\u001b[?25hRequirement already satisfied: hyperopt>=0.1.1 in /usr/local/lib/python3.7/dist-packages (from flair) (0.1.2)\n",
+            "Requirement already satisfied: python-dateutil>=2.6.1 in /usr/local/lib/python3.7/dist-packages (from flair) (2.8.1)\n",
+            "Requirement already satisfied: wcwidth in /usr/local/lib/python3.7/dist-packages (from ftfy->flair) (0.2.5)\n",
+            "Requirement already satisfied: requests in /usr/local/lib/python3.7/dist-packages (from transformers>=4.0.0->flair) (2.23.0)\n",
+            "Collecting sacremoses\n",
+            "\u001b[?25l  Downloading https://files.pythonhosted.org/packages/75/ee/67241dc87f266093c533a2d4d3d69438e57d7a90abb216fa076e7d475d4a/sacremoses-0.0.45-py3-none-any.whl (895kB)\n",
+            "\u001b[K     |████████████████████████████████| 901kB 52.0MB/s \n",
+            "\u001b[?25hRequirement already satisfied: importlib-metadata; python_version < \"3.8\" in /usr/local/lib/python3.7/dist-packages (from transformers>=4.0.0->flair) (4.0.1)\n",
+            "Requirement already satisfied: filelock in /usr/local/lib/python3.7/dist-packages (from transformers>=4.0.0->flair) (3.0.12)\n",
+            "Collecting tokenizers<0.11,>=0.10.1\n",
+            "\u001b[?25l  Downloading https://files.pythonhosted.org/packages/ae/04/5b870f26a858552025a62f1649c20d29d2672c02ff3c3fb4c688ca46467a/tokenizers-0.10.2-cp37-cp37m-manylinux2010_x86_64.whl (3.3MB)\n",
+            "\u001b[K     |████████████████████████████████| 3.3MB 49.0MB/s \n",
+            "\u001b[?25hRequirement already satisfied: packaging in /usr/local/lib/python3.7/dist-packages (from transformers>=4.0.0->flair) (20.9)\n",
+            "Requirement already satisfied: wrapt<2,>=1.10 in /usr/local/lib/python3.7/dist-packages (from deprecated>=1.2.4->flair) (1.12.1)\n",
+            "Requirement already satisfied: scipy>=0.17.0 in /usr/local/lib/python3.7/dist-packages (from scikit-learn>=0.21.3->flair) (1.4.1)\n",
+            "Requirement already satisfied: joblib>=0.11 in /usr/local/lib/python3.7/dist-packages (from scikit-learn>=0.21.3->flair) (1.0.1)\n",
+            "Requirement already satisfied: six in /usr/local/lib/python3.7/dist-packages (from langdetect->flair) (1.15.0)\n",
+            "Requirement already satisfied: typing-extensions in /usr/local/lib/python3.7/dist-packages (from torch<=1.7.1,>=1.5.0->flair) (3.7.4.3)\n",
+            "Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1 in /usr/local/lib/python3.7/dist-packages (from matplotlib>=2.2.3->flair) (2.4.7)\n",
+            "Requirement already satisfied: kiwisolver>=1.0.1 in /usr/local/lib/python3.7/dist-packages (from matplotlib>=2.2.3->flair) (1.3.1)\n",
+            "Requirement already satisfied: cycler>=0.10 in /usr/local/lib/python3.7/dist-packages (from matplotlib>=2.2.3->flair) (0.10.0)\n",
+            "Collecting overrides<4.0.0,>=3.0.0\n",
+            "  Downloading https://files.pythonhosted.org/packages/ff/b1/10f69c00947518e6676bbd43e739733048de64b8dd998e9c2d5a71f44c5d/overrides-3.1.0.tar.gz\n",
+            "Requirement already satisfied: smart-open>=1.2.1 in /usr/local/lib/python3.7/dist-packages (from gensim<=3.8.3,>=3.4.0->flair) (5.0.0)\n",
+            "Requirement already satisfied: networkx in /usr/local/lib/python3.7/dist-packages (from hyperopt>=0.1.1->flair) (2.5.1)\n",
+            "Requirement already satisfied: future in /usr/local/lib/python3.7/dist-packages (from hyperopt>=0.1.1->flair) (0.16.0)\n",
+            "Requirement already satisfied: pymongo in /usr/local/lib/python3.7/dist-packages (from hyperopt>=0.1.1->flair) (3.11.4)\n",
+            "Requirement already satisfied: certifi>=2017.4.17 in /usr/local/lib/python3.7/dist-packages (from requests->transformers>=4.0.0->flair) (2020.12.5)\n",
+            "Requirement already satisfied: chardet<4,>=3.0.2 in /usr/local/lib/python3.7/dist-packages (from requests->transformers>=4.0.0->flair) (3.0.4)\n",
+            "Requirement already satisfied: urllib3!=1.25.0,!=1.25.1,<1.26,>=1.21.1 in /usr/local/lib/python3.7/dist-packages (from requests->transformers>=4.0.0->flair) (1.24.3)\n",
+            "Requirement already satisfied: idna<3,>=2.5 in /usr/local/lib/python3.7/dist-packages (from requests->transformers>=4.0.0->flair) (2.10)\n",
+            "Requirement already satisfied: click in /usr/local/lib/python3.7/dist-packages (from sacremoses->transformers>=4.0.0->flair) (8.0.0)\n",
+            "Requirement already satisfied: zipp>=0.5 in /usr/local/lib/python3.7/dist-packages (from importlib-metadata; python_version < \"3.8\"->transformers>=4.0.0->flair) (3.4.1)\n",
+            "Requirement already satisfied: decorator<5,>=4.3 in /usr/local/lib/python3.7/dist-packages (from networkx->hyperopt>=0.1.1->flair) (4.4.2)\n",
+            "Building wheels for collected packages: gdown\n",
+            "  Building wheel for gdown (PEP 517) ... \u001b[?25l\u001b[?25hdone\n",
+            "  Created wheel for gdown: filename=gdown-3.12.2-cp37-none-any.whl size=9693 sha256=b0b0a5dd4b7723d23dfa69dde5901940d58d2d7a2df6fffc6efcc999af0eef3d\n",
+            "  Stored in directory: /root/.cache/pip/wheels/81/d0/d7/d9983facc6f2775411803e0e2d30ebf98efbf2fc6e57701e09\n",
+            "Successfully built gdown\n",
+            "Building wheels for collected packages: mpld3, ftfy, langdetect, sqlitedict, segtok, overrides\n",
+            "  Building wheel for mpld3 (setup.py) ... \u001b[?25l\u001b[?25hdone\n",
+            "  Created wheel for mpld3: filename=mpld3-0.3-cp37-none-any.whl size=116679 sha256=2601195c728dcef32ede7d875f4bb23fe64a1aa6338019fef63640e3eb64f7c3\n",
+            "  Stored in directory: /root/.cache/pip/wheels/c0/47/fb/8a64f89aecfe0059830479308ad42d62e898a3e3cefdf6ba28\n",
+            "  Building wheel for ftfy (setup.py) ... \u001b[?25l\u001b[?25hdone\n",
+            "  Created wheel for ftfy: filename=ftfy-6.0.1-cp37-none-any.whl size=41573 sha256=c4206bb666b82def89fe95e424ec3208a41aee754d121eb33c6e4d3c46dd0944\n",
+            "  Stored in directory: /root/.cache/pip/wheels/ae/73/c7/9056e14b04919e5c262fe80b54133b1a88d73683d05d7ac65c\n",
+            "  Building wheel for langdetect (setup.py) ... \u001b[?25l\u001b[?25hdone\n",
+            "  Created wheel for langdetect: filename=langdetect-1.0.9-cp37-none-any.whl size=993223 sha256=2ae1b61e5eb3dc723e8d5e6b612dcd8f4c164fa31429ec3d89d25cb640d5360b\n",
+            "  Stored in directory: /root/.cache/pip/wheels/7e/18/13/038c34057808931c7ddc6c92d3aa015cf1a498df5a70268996\n",
+            "  Building wheel for sqlitedict (setup.py) ... \u001b[?25l\u001b[?25hdone\n",
+            "  Created wheel for sqlitedict: filename=sqlitedict-1.7.0-cp37-none-any.whl size=14376 sha256=7b3cbf5df9dc85e6e64cda89143c98780250228318e8c212ccb0a5acd4c01a08\n",
+            "  Stored in directory: /root/.cache/pip/wheels/cf/c6/4f/2c64a43f041415eb8b8740bd80e15e92f0d46c5e464d8e4b9b\n",
+            "  Building wheel for segtok (setup.py) ... \u001b[?25l\u001b[?25hdone\n",
+            "  Created wheel for segtok: filename=segtok-1.5.10-cp37-none-any.whl size=25019 sha256=03c1d4089ed73f6f280d61d39352297a042c3d75cf67dd83ce810249fa301531\n",
+            "  Stored in directory: /root/.cache/pip/wheels/b4/39/f6/9ca1c5cabde964d728023b5751c3a206a5c8cc40252321fb6b\n",
+            "  Building wheel for overrides (setup.py) ... \u001b[?25l\u001b[?25hdone\n",
+            "  Created wheel for overrides: filename=overrides-3.1.0-cp37-none-any.whl size=10174 sha256=83f911c29ed903151c94a0098b5a96339696e4187fd7bb091564430cc30eec58\n",
+            "  Stored in directory: /root/.cache/pip/wheels/5c/24/13/6ef8600e6f147c95e595f1289a86a3cc82ed65df57582c65a9\n",
+            "Successfully built mpld3 ftfy langdetect sqlitedict segtok overrides\n",
+            "\u001b[31mERROR: torchvision 0.9.1+cu101 has requirement torch==1.8.1, but you'll have torch 1.7.1 which is incompatible.\u001b[0m\n",
+            "\u001b[31mERROR: torchtext 0.9.1 has requirement torch==1.8.1, but you'll have torch 1.7.1 which is incompatible.\u001b[0m\n",
+            "\u001b[31mERROR: transformers 4.6.1 has requirement huggingface-hub==0.0.8, but you'll have huggingface-hub 0.0.9 which is incompatible.\u001b[0m\n",
+            "\u001b[31mERROR: konoha 4.6.4 has requirement importlib-metadata<4.0.0,>=3.7.0, but you'll have importlib-metadata 4.0.1 which is incompatible.\u001b[0m\n",
+            "\u001b[31mERROR: konoha 4.6.4 has requirement requests<3.0.0,>=2.25.1, but you'll have requests 2.23.0 which is incompatible.\u001b[0m\n",
+            "Installing collected packages: mpld3, ftfy, huggingface-hub, sacremoses, tokenizers, transformers, deprecated, janome, langdetect, torch, sqlitedict, overrides, konoha, gdown, segtok, sentencepiece, bpemb, flair\n",
+            "  Found existing installation: torch 1.8.1+cu101\n",
+            "    Uninstalling torch-1.8.1+cu101:\n",
+            "      Successfully uninstalled torch-1.8.1+cu101\n",
+            "  Found existing installation: gdown 3.6.4\n",
+            "    Uninstalling gdown-3.6.4:\n",
+            "      Successfully uninstalled gdown-3.6.4\n",
+            "Successfully installed bpemb-0.3.3 deprecated-1.2.12 flair-0.8.0.post1 ftfy-6.0.1 gdown-3.12.2 huggingface-hub-0.0.9 janome-0.4.1 konoha-4.6.4 langdetect-1.0.9 mpld3-0.3 overrides-3.1.0 sacremoses-0.0.45 segtok-1.5.10 sentencepiece-0.1.95 sqlitedict-1.7.0 tokenizers-0.10.2 torch-1.7.1 transformers-4.6.1\n",
+            "Requirement already satisfied: yellowbrick in /usr/local/lib/python3.7/dist-packages (0.9.1)\n",
+            "Requirement already satisfied: scipy>=1.0.0 in /usr/local/lib/python3.7/dist-packages (from yellowbrick) (1.4.1)\n",
+            "Requirement already satisfied: numpy>=1.13.0 in /usr/local/lib/python3.7/dist-packages (from yellowbrick) (1.19.5)\n",
+            "Requirement already satisfied: scikit-learn>=0.20 in /usr/local/lib/python3.7/dist-packages (from yellowbrick) (0.22.2.post1)\n",
+            "Requirement already satisfied: matplotlib!=3.0.0,>=1.5.1 in /usr/local/lib/python3.7/dist-packages (from yellowbrick) (3.2.2)\n",
+            "Requirement already satisfied: cycler>=0.10.0 in /usr/local/lib/python3.7/dist-packages (from yellowbrick) (0.10.0)\n",
+            "Requirement already satisfied: joblib>=0.11 in /usr/local/lib/python3.7/dist-packages (from scikit-learn>=0.20->yellowbrick) (1.0.1)\n",
+            "Requirement already satisfied: python-dateutil>=2.1 in /usr/local/lib/python3.7/dist-packages (from matplotlib!=3.0.0,>=1.5.1->yellowbrick) (2.8.1)\n",
+            "Requirement already satisfied: kiwisolver>=1.0.1 in /usr/local/lib/python3.7/dist-packages (from matplotlib!=3.0.0,>=1.5.1->yellowbrick) (1.3.1)\n",
+            "Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1 in /usr/local/lib/python3.7/dist-packages (from matplotlib!=3.0.0,>=1.5.1->yellowbrick) (2.4.7)\n",
+            "Requirement already satisfied: six in /usr/local/lib/python3.7/dist-packages (from cycler>=0.10.0->yellowbrick) (1.15.0)\n",
+            "Requirement already satisfied: keras in /usr/local/lib/python3.7/dist-packages (2.4.3)\n",
+            "Requirement already satisfied: scipy>=0.14 in /usr/local/lib/python3.7/dist-packages (from keras) (1.4.1)\n",
+            "Requirement already satisfied: pyyaml in /usr/local/lib/python3.7/dist-packages (from keras) (3.13)\n",
+            "Requirement already satisfied: h5py in /usr/local/lib/python3.7/dist-packages (from keras) (2.10.0)\n",
+            "Requirement already satisfied: numpy>=1.9.1 in /usr/local/lib/python3.7/dist-packages (from keras) (1.19.5)\n",
+            "Requirement already satisfied: six in /usr/local/lib/python3.7/dist-packages (from h5py->keras) (1.15.0)\n",
+            "Collecting sentence-transformers\n",
+            "\u001b[?25l  Downloading https://files.pythonhosted.org/packages/14/9d/abacb6f7bb63df39285c55bb51b6403a7fd93ac2aea48b01f6215175446c/sentence-transformers-1.1.1.tar.gz (81kB)\n",
+            "\u001b[K     |████████████████████████████████| 81kB 3.8MB/s \n",
+            "\u001b[?25hRequirement already satisfied: transformers<5.0.0,>=3.1.0 in /usr/local/lib/python3.7/dist-packages (from sentence-transformers) (4.6.1)\n",
+            "Requirement already satisfied: tqdm in /usr/local/lib/python3.7/dist-packages (from sentence-transformers) (4.41.1)\n",
+            "Requirement already satisfied: torch>=1.6.0 in /usr/local/lib/python3.7/dist-packages (from sentence-transformers) (1.7.1)\n",
+            "Requirement already satisfied: torchvision in /usr/local/lib/python3.7/dist-packages (from sentence-transformers) (0.9.1+cu101)\n",
+            "Requirement already satisfied: numpy in /usr/local/lib/python3.7/dist-packages (from sentence-transformers) (1.19.5)\n",
+            "Requirement already satisfied: scikit-learn in /usr/local/lib/python3.7/dist-packages (from sentence-transformers) (0.22.2.post1)\n",
+            "Requirement already satisfied: scipy in /usr/local/lib/python3.7/dist-packages (from sentence-transformers) (1.4.1)\n",
+            "Requirement already satisfied: nltk in /usr/local/lib/python3.7/dist-packages (from sentence-transformers) (3.2.5)\n",
+            "Requirement already satisfied: sentencepiece in /usr/local/lib/python3.7/dist-packages (from sentence-transformers) (0.1.95)\n",
+            "Requirement already satisfied: regex!=2019.12.17 in /usr/local/lib/python3.7/dist-packages (from transformers<5.0.0,>=3.1.0->sentence-transformers) (2019.12.20)\n",
+            "Requirement already satisfied: sacremoses in /usr/local/lib/python3.7/dist-packages (from transformers<5.0.0,>=3.1.0->sentence-transformers) (0.0.45)\n",
+            "Requirement already satisfied: packaging in /usr/local/lib/python3.7/dist-packages (from transformers<5.0.0,>=3.1.0->sentence-transformers) (20.9)\n",
+            "Collecting huggingface-hub==0.0.8\n",
+            "  Downloading https://files.pythonhosted.org/packages/a1/88/7b1e45720ecf59c6c6737ff332f41c955963090a18e72acbcbeac6b25e86/huggingface_hub-0.0.8-py3-none-any.whl\n",
+            "Requirement already satisfied: filelock in /usr/local/lib/python3.7/dist-packages (from transformers<5.0.0,>=3.1.0->sentence-transformers) (3.0.12)\n",
+            "Requirement already satisfied: tokenizers<0.11,>=0.10.1 in /usr/local/lib/python3.7/dist-packages (from transformers<5.0.0,>=3.1.0->sentence-transformers) (0.10.2)\n",
+            "Requirement already satisfied: requests in /usr/local/lib/python3.7/dist-packages (from transformers<5.0.0,>=3.1.0->sentence-transformers) (2.23.0)\n",
+            "Requirement already satisfied: importlib-metadata; python_version < \"3.8\" in /usr/local/lib/python3.7/dist-packages (from transformers<5.0.0,>=3.1.0->sentence-transformers) (4.0.1)\n",
+            "Requirement already satisfied: typing-extensions in /usr/local/lib/python3.7/dist-packages (from torch>=1.6.0->sentence-transformers) (3.7.4.3)\n",
+            "Requirement already satisfied: pillow>=4.1.1 in /usr/local/lib/python3.7/dist-packages (from torchvision->sentence-transformers) (7.1.2)\n",
+            "Requirement already satisfied: joblib>=0.11 in /usr/local/lib/python3.7/dist-packages (from scikit-learn->sentence-transformers) (1.0.1)\n",
+            "Requirement already satisfied: six in /usr/local/lib/python3.7/dist-packages (from nltk->sentence-transformers) (1.15.0)\n",
+            "Requirement already satisfied: click in /usr/local/lib/python3.7/dist-packages (from sacremoses->transformers<5.0.0,>=3.1.0->sentence-transformers) (8.0.0)\n",
+            "Requirement already satisfied: pyparsing>=2.0.2 in /usr/local/lib/python3.7/dist-packages (from packaging->transformers<5.0.0,>=3.1.0->sentence-transformers) (2.4.7)\n",
+            "Requirement already satisfied: idna<3,>=2.5 in /usr/local/lib/python3.7/dist-packages (from requests->transformers<5.0.0,>=3.1.0->sentence-transformers) (2.10)\n",
+            "Requirement already satisfied: urllib3!=1.25.0,!=1.25.1,<1.26,>=1.21.1 in /usr/local/lib/python3.7/dist-packages (from requests->transformers<5.0.0,>=3.1.0->sentence-transformers) (1.24.3)\n",
+            "Requirement already satisfied: certifi>=2017.4.17 in /usr/local/lib/python3.7/dist-packages (from requests->transformers<5.0.0,>=3.1.0->sentence-transformers) (2020.12.5)\n",
+            "Requirement already satisfied: chardet<4,>=3.0.2 in /usr/local/lib/python3.7/dist-packages (from requests->transformers<5.0.0,>=3.1.0->sentence-transformers) (3.0.4)\n",
+            "Requirement already satisfied: zipp>=0.5 in /usr/local/lib/python3.7/dist-packages (from importlib-metadata; python_version < \"3.8\"->transformers<5.0.0,>=3.1.0->sentence-transformers) (3.4.1)\n",
+            "Building wheels for collected packages: sentence-transformers\n",
+            "  Building wheel for sentence-transformers (setup.py) ... \u001b[?25l\u001b[?25hdone\n",
+            "  Created wheel for sentence-transformers: filename=sentence_transformers-1.1.1-cp37-none-any.whl size=123338 sha256=7f5dee8e83be024d1562cb66c731a3005ce4a6a9df57fdb38315b2c76f208ca1\n",
+            "  Stored in directory: /root/.cache/pip/wheels/5e/89/29/45e45adc162b50f97f71801e8b07947c9cfe2b3ae7dbf37896\n",
+            "Successfully built sentence-transformers\n",
+            "Installing collected packages: sentence-transformers, huggingface-hub\n",
+            "  Found existing installation: huggingface-hub 0.0.9\n",
+            "    Uninstalling huggingface-hub-0.0.9:\n",
+            "      Successfully uninstalled huggingface-hub-0.0.9\n",
+            "Successfully installed huggingface-hub-0.0.8 sentence-transformers-1.1.1\n",
+            "Requirement already satisfied: keras in /usr/local/lib/python3.7/dist-packages (2.4.3)\n",
+            "Requirement already satisfied: numpy>=1.9.1 in /usr/local/lib/python3.7/dist-packages (from keras) (1.19.5)\n",
+            "Requirement already satisfied: h5py in /usr/local/lib/python3.7/dist-packages (from keras) (2.10.0)\n",
+            "Requirement already satisfied: scipy>=0.14 in /usr/local/lib/python3.7/dist-packages (from keras) (1.4.1)\n",
+            "Requirement already satisfied: pyyaml in /usr/local/lib/python3.7/dist-packages (from keras) (3.13)\n",
+            "Requirement already satisfied: six in /usr/local/lib/python3.7/dist-packages (from h5py->keras) (1.15.0)\n",
+            "Requirement already satisfied: tensorflow in /usr/local/lib/python3.7/dist-packages (2.4.1)\n",
+            "Requirement already satisfied: termcolor~=1.1.0 in /usr/local/lib/python3.7/dist-packages (from tensorflow) (1.1.0)\n",
+            "Requirement already satisfied: flatbuffers~=1.12.0 in /usr/local/lib/python3.7/dist-packages (from tensorflow) (1.12)\n",
+            "Requirement already satisfied: google-pasta~=0.2 in /usr/local/lib/python3.7/dist-packages (from tensorflow) (0.2.0)\n",
+            "Requirement already satisfied: gast==0.3.3 in /usr/local/lib/python3.7/dist-packages (from tensorflow) (0.3.3)\n",
+            "Requirement already satisfied: grpcio~=1.32.0 in /usr/local/lib/python3.7/dist-packages (from tensorflow) (1.32.0)\n",
+            "Requirement already satisfied: protobuf>=3.9.2 in /usr/local/lib/python3.7/dist-packages (from tensorflow) (3.12.4)\n",
+            "Requirement already satisfied: typing-extensions~=3.7.4 in /usr/local/lib/python3.7/dist-packages (from tensorflow) (3.7.4.3)\n",
+            "Requirement already satisfied: wheel~=0.35 in /usr/local/lib/python3.7/dist-packages (from tensorflow) (0.36.2)\n",
+            "Requirement already satisfied: keras-preprocessing~=1.1.2 in /usr/local/lib/python3.7/dist-packages (from tensorflow) (1.1.2)\n",
+            "Requirement already satisfied: astunparse~=1.6.3 in /usr/local/lib/python3.7/dist-packages (from tensorflow) (1.6.3)\n",
+            "Requirement already satisfied: h5py~=2.10.0 in /usr/local/lib/python3.7/dist-packages (from tensorflow) (2.10.0)\n",
+            "Requirement already satisfied: wrapt~=1.12.1 in /usr/local/lib/python3.7/dist-packages (from tensorflow) (1.12.1)\n",
+            "Requirement already satisfied: opt-einsum~=3.3.0 in /usr/local/lib/python3.7/dist-packages (from tensorflow) (3.3.0)\n",
+            "Requirement already satisfied: absl-py~=0.10 in /usr/local/lib/python3.7/dist-packages (from tensorflow) (0.12.0)\n",
+            "Requirement already satisfied: numpy~=1.19.2 in /usr/local/lib/python3.7/dist-packages (from tensorflow) (1.19.5)\n",
+            "Requirement already satisfied: tensorboard~=2.4 in /usr/local/lib/python3.7/dist-packages (from tensorflow) (2.4.1)\n",
+            "Requirement already satisfied: tensorflow-estimator<2.5.0,>=2.4.0 in /usr/local/lib/python3.7/dist-packages (from tensorflow) (2.4.0)\n",
+            "Requirement already satisfied: six~=1.15.0 in /usr/local/lib/python3.7/dist-packages (from tensorflow) (1.15.0)\n",
+            "Requirement already satisfied: setuptools in /usr/local/lib/python3.7/dist-packages (from protobuf>=3.9.2->tensorflow) (56.1.0)\n",
+            "Requirement already satisfied: google-auth-oauthlib<0.5,>=0.4.1 in /usr/local/lib/python3.7/dist-packages (from tensorboard~=2.4->tensorflow) (0.4.4)\n",
+            "Requirement already satisfied: werkzeug>=0.11.15 in /usr/local/lib/python3.7/dist-packages (from tensorboard~=2.4->tensorflow) (2.0.0)\n",
+            "Requirement already satisfied: markdown>=2.6.8 in /usr/local/lib/python3.7/dist-packages (from tensorboard~=2.4->tensorflow) (3.3.4)\n",
+            "Requirement already satisfied: requests<3,>=2.21.0 in /usr/local/lib/python3.7/dist-packages (from tensorboard~=2.4->tensorflow) (2.23.0)\n",
+            "Requirement already satisfied: google-auth<2,>=1.6.3 in /usr/local/lib/python3.7/dist-packages (from tensorboard~=2.4->tensorflow) (1.30.0)\n",
+            "Requirement already satisfied: tensorboard-plugin-wit>=1.6.0 in /usr/local/lib/python3.7/dist-packages (from tensorboard~=2.4->tensorflow) (1.8.0)\n",
+            "Requirement already satisfied: requests-oauthlib>=0.7.0 in /usr/local/lib/python3.7/dist-packages (from google-auth-oauthlib<0.5,>=0.4.1->tensorboard~=2.4->tensorflow) (1.3.0)\n",
+            "Requirement already satisfied: importlib-metadata; python_version < \"3.8\" in /usr/local/lib/python3.7/dist-packages (from markdown>=2.6.8->tensorboard~=2.4->tensorflow) (4.0.1)\n",
+            "Requirement already satisfied: idna<3,>=2.5 in /usr/local/lib/python3.7/dist-packages (from requests<3,>=2.21.0->tensorboard~=2.4->tensorflow) (2.10)\n",
+            "Requirement already satisfied: urllib3!=1.25.0,!=1.25.1,<1.26,>=1.21.1 in /usr/local/lib/python3.7/dist-packages (from requests<3,>=2.21.0->tensorboard~=2.4->tensorflow) (1.24.3)\n",
+            "Requirement already satisfied: chardet<4,>=3.0.2 in /usr/local/lib/python3.7/dist-packages (from requests<3,>=2.21.0->tensorboard~=2.4->tensorflow) (3.0.4)\n",
+            "Requirement already satisfied: certifi>=2017.4.17 in /usr/local/lib/python3.7/dist-packages (from requests<3,>=2.21.0->tensorboard~=2.4->tensorflow) (2020.12.5)\n",
+            "Requirement already satisfied: cachetools<5.0,>=2.0.0 in /usr/local/lib/python3.7/dist-packages (from google-auth<2,>=1.6.3->tensorboard~=2.4->tensorflow) (4.2.2)\n",
+            "Requirement already satisfied: rsa<5,>=3.1.4; python_version >= \"3.6\" in /usr/local/lib/python3.7/dist-packages (from google-auth<2,>=1.6.3->tensorboard~=2.4->tensorflow) (4.7.2)\n",
+            "Requirement already satisfied: pyasn1-modules>=0.2.1 in /usr/local/lib/python3.7/dist-packages (from google-auth<2,>=1.6.3->tensorboard~=2.4->tensorflow) (0.2.8)\n",
+            "Requirement already satisfied: oauthlib>=3.0.0 in /usr/local/lib/python3.7/dist-packages (from requests-oauthlib>=0.7.0->google-auth-oauthlib<0.5,>=0.4.1->tensorboard~=2.4->tensorflow) (3.1.0)\n",
+            "Requirement already satisfied: zipp>=0.5 in /usr/local/lib/python3.7/dist-packages (from importlib-metadata; python_version < \"3.8\"->markdown>=2.6.8->tensorboard~=2.4->tensorflow) (3.4.1)\n",
+            "Requirement already satisfied: pyasn1>=0.1.3 in /usr/local/lib/python3.7/dist-packages (from rsa<5,>=3.1.4; python_version >= \"3.6\"->google-auth<2,>=1.6.3->tensorboard~=2.4->tensorflow) (0.4.8)\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "P3VlH2KFOUET",
+        "outputId": "eaa04ac1-f522-4e3f-f1dc-94175853f716"
+      },
+      "source": [
+        "!pip install yellowbrick"
+      ],
+      "execution_count": 2,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "Requirement already satisfied: yellowbrick in /usr/local/lib/python3.7/dist-packages (0.9.1)\n",
+            "Requirement already satisfied: scikit-learn>=0.20 in /usr/local/lib/python3.7/dist-packages (from yellowbrick) (0.22.2.post1)\n",
+            "Requirement already satisfied: cycler>=0.10.0 in /usr/local/lib/python3.7/dist-packages (from yellowbrick) (0.10.0)\n",
+            "Requirement already satisfied: scipy>=1.0.0 in /usr/local/lib/python3.7/dist-packages (from yellowbrick) (1.4.1)\n",
+            "Requirement already satisfied: numpy>=1.13.0 in /usr/local/lib/python3.7/dist-packages (from yellowbrick) (1.19.5)\n",
+            "Requirement already satisfied: matplotlib!=3.0.0,>=1.5.1 in /usr/local/lib/python3.7/dist-packages (from yellowbrick) (3.2.2)\n",
+            "Requirement already satisfied: joblib>=0.11 in /usr/local/lib/python3.7/dist-packages (from scikit-learn>=0.20->yellowbrick) (1.0.1)\n",
+            "Requirement already satisfied: six in /usr/local/lib/python3.7/dist-packages (from cycler>=0.10.0->yellowbrick) (1.15.0)\n",
+            "Requirement already satisfied: python-dateutil>=2.1 in /usr/local/lib/python3.7/dist-packages (from matplotlib!=3.0.0,>=1.5.1->yellowbrick) (2.8.1)\n",
+            "Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1 in /usr/local/lib/python3.7/dist-packages (from matplotlib!=3.0.0,>=1.5.1->yellowbrick) (2.4.7)\n",
+            "Requirement already satisfied: kiwisolver>=1.0.1 in /usr/local/lib/python3.7/dist-packages (from matplotlib!=3.0.0,>=1.5.1->yellowbrick) (1.3.1)\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "up6ZSf2fqFv_"
+      },
+      "source": [
+        "\n",
+        "from sklearn.model_selection import cross_validate as cross_validation, ShuffleSplit, cross_val_score, train_test_split, KFold, StratifiedKFold\n",
+        "from sklearn.model_selection import GridSearchCV, RandomizedSearchCV\n",
+        "from sklearn.metrics import classification_report, accuracy_score, auc\n",
+        "from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer\n",
+        "from sklearn.svm import LinearSVC\n",
+        "from sklearn.svm import SVC\n",
+        "import pandas as pd\n",
+        "import numpy as np\n",
+        "import time\n",
+        "from scipy.sparse import csr_matrix, hstack\n",
+        "from gensim.models import KeyedVectors\n",
+        "from gensim.models.wrappers import FastText\n",
+        "from flair.embeddings import FlairEmbeddings, TransformerWordEmbeddings , TransformerDocumentEmbeddings, SentenceTransformerDocumentEmbeddings\n",
+        "from flair.data import Sentence\n",
+        "import io\n",
+        "from google.colab import files\n",
+        "from sklearn.ensemble import ExtraTreesClassifier\n",
+        "from sklearn.ensemble import RandomForestClassifier\n",
+        "from sklearn.tree import *\n",
+        "from sklearn.ensemble import *\n",
+        "from sklearn.neighbors import *\n",
+        "from sklearn.neural_network import *\n",
+        "from sklearn.linear_model import *\n",
+        "from keras.models import Model\n",
+        "from sklearn.naive_bayes import *\n",
+        "from gensim.models.wrappers import FastText \n",
+        "import gensim\n",
+        "from pathlib import Path\n",
+        "from sklearn.preprocessing import LabelEncoder\n",
+        "from keras.utils import to_categorical\n",
+        "from sklearn.linear_model import RidgeClassifierCV\n",
+        "import matplotlib.pyplot as plt\n",
+        "import pickle\n"
+      ],
+      "execution_count": 3,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "resources": {
+            "http://localhost:8080/nbextensions/google.colab/files.js": {
+              "data": "Ly8gQ29weXJpZ2h0IDIwMTcgR29vZ2xlIExMQwovLwovLyBMaWNlbnNlZCB1bmRlciB0aGUgQXBhY2hlIExpY2Vuc2UsIFZlcnNpb24gMi4wICh0aGUgIkxpY2Vuc2UiKTsKLy8geW91IG1heSBub3QgdXNlIHRoaXMgZmlsZSBleGNlcHQgaW4gY29tcGxpYW5jZSB3aXRoIHRoZSBMaWNlbnNlLgovLyBZb3UgbWF5IG9idGFpbiBhIGNvcHkgb2YgdGhlIExpY2Vuc2UgYXQKLy8KLy8gICAgICBodHRwOi8vd3d3LmFwYWNoZS5vcmcvbGljZW5zZXMvTElDRU5TRS0yLjAKLy8KLy8gVW5sZXNzIHJlcXVpcmVkIGJ5IGFwcGxpY2FibGUgbGF3IG9yIGFncmVlZCB0byBpbiB3cml0aW5nLCBzb2Z0d2FyZQovLyBkaXN0cmlidXRlZCB1bmRlciB0aGUgTGljZW5zZSBpcyBkaXN0cmlidXRlZCBvbiBhbiAiQVMgSVMiIEJBU0lTLAovLyBXSVRIT1VUIFdBUlJBTlRJRVMgT1IgQ09ORElUSU9OUyBPRiBBTlkgS0lORCwgZWl0aGVyIGV4cHJlc3Mgb3IgaW1wbGllZC4KLy8gU2VlIHRoZSBMaWNlbnNlIGZvciB0aGUgc3BlY2lmaWMgbGFuZ3VhZ2UgZ292ZXJuaW5nIHBlcm1pc3Npb25zIGFuZAovLyBsaW1pdGF0aW9ucyB1bmRlciB0aGUgTGljZW5zZS4KCi8qKgogKiBAZmlsZW92ZXJ2aWV3IEhlbHBlcnMgZm9yIGdvb2dsZS5jb2xhYiBQeXRob24gbW9kdWxlLgogKi8KKGZ1bmN0aW9uKHNjb3BlKSB7CmZ1bmN0aW9uIHNwYW4odGV4dCwgc3R5bGVBdHRyaWJ1dGVzID0ge30pIHsKICBjb25zdCBlbGVtZW50ID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgnc3BhbicpOwogIGVsZW1lbnQudGV4dENvbnRlbnQgPSB0ZXh0OwogIGZvciAoY29uc3Qga2V5IG9mIE9iamVjdC5rZXlzKHN0eWxlQXR0cmlidXRlcykpIHsKICAgIGVsZW1lbnQuc3R5bGVba2V5XSA9IHN0eWxlQXR0cmlidXRlc1trZXldOwogIH0KICByZXR1cm4gZWxlbWVudDsKfQoKLy8gTWF4IG51bWJlciBvZiBieXRlcyB3aGljaCB3aWxsIGJlIHVwbG9hZGVkIGF0IGEgdGltZS4KY29uc3QgTUFYX1BBWUxPQURfU0laRSA9IDEwMCAqIDEwMjQ7CgpmdW5jdGlvbiBfdXBsb2FkRmlsZXMoaW5wdXRJZCwgb3V0cHV0SWQpIHsKICBjb25zdCBzdGVwcyA9IHVwbG9hZEZpbGVzU3RlcChpbnB1dElkLCBvdXRwdXRJZCk7CiAgY29uc3Qgb3V0cHV0RWxlbWVudCA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKG91dHB1dElkKTsKICAvLyBDYWNoZSBzdGVwcyBvbiB0aGUgb3V0cHV0RWxlbWVudCB0byBtYWtlIGl0IGF2YWlsYWJsZSBmb3IgdGhlIG5leHQgY2FsbAogIC8vIHRvIHVwbG9hZEZpbGVzQ29udGludWUgZnJvbSBQeXRob24uCiAgb3V0cHV0RWxlbWVudC5zdGVwcyA9IHN0ZXBzOwoKICByZXR1cm4gX3VwbG9hZEZpbGVzQ29udGludWUob3V0cHV0SWQpOwp9CgovLyBUaGlzIGlzIHJvdWdobHkgYW4gYXN5bmMgZ2VuZXJhdG9yIChub3Qgc3VwcG9ydGVkIGluIHRoZSBicm93c2VyIHlldCksCi8vIHdoZXJlIHRoZXJlIGFyZSBtdWx0aXBsZSBhc3luY2hyb25vdXMgc3RlcHMgYW5kIHRoZSBQeXRob24gc2lkZSBpcyBnb2luZwovLyB0byBwb2xsIGZvciBjb21wbGV0aW9uIG9mIGVhY2ggc3RlcC4KLy8gVGhpcyB1c2VzIGEgUHJvbWlzZSB0byBibG9jayB0aGUgcHl0aG9uIHNpZGUgb24gY29tcGxldGlvbiBvZiBlYWNoIHN0ZXAsCi8vIHRoZW4gcGFzc2VzIHRoZSByZXN1bHQgb2YgdGhlIHByZXZpb3VzIHN0ZXAgYXMgdGhlIGlucHV0IHRvIHRoZSBuZXh0IHN0ZXAuCmZ1bmN0aW9uIF91cGxvYWRGaWxlc0NvbnRpbnVlKG91dHB1dElkKSB7CiAgY29uc3Qgb3V0cHV0RWxlbWVudCA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKG91dHB1dElkKTsKICBjb25zdCBzdGVwcyA9IG91dHB1dEVsZW1lbnQuc3RlcHM7CgogIGNvbnN0IG5leHQgPSBzdGVwcy5uZXh0KG91dHB1dEVsZW1lbnQubGFzdFByb21pc2VWYWx1ZSk7CiAgcmV0dXJuIFByb21pc2UucmVzb2x2ZShuZXh0LnZhbHVlLnByb21pc2UpLnRoZW4oKHZhbHVlKSA9PiB7CiAgICAvLyBDYWNoZSB0aGUgbGFzdCBwcm9taXNlIHZhbHVlIHRvIG1ha2UgaXQgYXZhaWxhYmxlIHRvIHRoZSBuZXh0CiAgICAvLyBzdGVwIG9mIHRoZSBnZW5lcmF0b3IuCiAgICBvdXRwdXRFbGVtZW50Lmxhc3RQcm9taXNlVmFsdWUgPSB2YWx1ZTsKICAgIHJldHVybiBuZXh0LnZhbHVlLnJlc3BvbnNlOwogIH0pOwp9CgovKioKICogR2VuZXJhdG9yIGZ1bmN0aW9uIHdoaWNoIGlzIGNhbGxlZCBiZXR3ZWVuIGVhY2ggYXN5bmMgc3RlcCBvZiB0aGUgdXBsb2FkCiAqIHByb2Nlc3MuCiAqIEBwYXJhbSB7c3RyaW5nfSBpbnB1dElkIEVsZW1lbnQgSUQgb2YgdGhlIGlucHV0IGZpbGUgcGlja2VyIGVsZW1lbnQuCiAqIEBwYXJhbSB7c3RyaW5nfSBvdXRwdXRJZCBFbGVtZW50IElEIG9mIHRoZSBvdXRwdXQgZGlzcGxheS4KICogQHJldHVybiB7IUl0ZXJhYmxlPCFPYmplY3Q+fSBJdGVyYWJsZSBvZiBuZXh0IHN0ZXBzLgogKi8KZnVuY3Rpb24qIHVwbG9hZEZpbGVzU3RlcChpbnB1dElkLCBvdXRwdXRJZCkgewogIGNvbnN0IGlucHV0RWxlbWVudCA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKGlucHV0SWQpOwogIGlucHV0RWxlbWVudC5kaXNhYmxlZCA9IGZhbHNlOwoKICBjb25zdCBvdXRwdXRFbGVtZW50ID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQob3V0cHV0SWQpOwogIG91dHB1dEVsZW1lbnQuaW5uZXJIVE1MID0gJyc7CgogIGNvbnN0IHBpY2tlZFByb21pc2UgPSBuZXcgUHJvbWlzZSgocmVzb2x2ZSkgPT4gewogICAgaW5wdXRFbGVtZW50LmFkZEV2ZW50TGlzdGVuZXIoJ2NoYW5nZScsIChlKSA9PiB7CiAgICAgIHJlc29sdmUoZS50YXJnZXQuZmlsZXMpOwogICAgfSk7CiAgfSk7CgogIGNvbnN0IGNhbmNlbCA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoJ2J1dHRvbicpOwogIGlucHV0RWxlbWVudC5wYXJlbnRFbGVtZW50LmFwcGVuZENoaWxkKGNhbmNlbCk7CiAgY2FuY2VsLnRleHRDb250ZW50ID0gJ0NhbmNlbCB1cGxvYWQnOwogIGNvbnN0IGNhbmNlbFByb21pc2UgPSBuZXcgUHJvbWlzZSgocmVzb2x2ZSkgPT4gewogICAgY2FuY2VsLm9uY2xpY2sgPSAoKSA9PiB7CiAgICAgIHJlc29sdmUobnVsbCk7CiAgICB9OwogIH0pOwoKICAvLyBXYWl0IGZvciB0aGUgdXNlciB0byBwaWNrIHRoZSBmaWxlcy4KICBjb25zdCBmaWxlcyA9IHlpZWxkIHsKICAgIHByb21pc2U6IFByb21pc2UucmFjZShbcGlja2VkUHJvbWlzZSwgY2FuY2VsUHJvbWlzZV0pLAogICAgcmVzcG9uc2U6IHsKICAgICAgYWN0aW9uOiAnc3RhcnRpbmcnLAogICAgfQogIH07CgogIGNhbmNlbC5yZW1vdmUoKTsKCiAgLy8gRGlzYWJsZSB0aGUgaW5wdXQgZWxlbWVudCBzaW5jZSBmdXJ0aGVyIHBpY2tzIGFyZSBub3QgYWxsb3dlZC4KICBpbnB1dEVsZW1lbnQuZGlzYWJsZWQgPSB0cnVlOwoKICBpZiAoIWZpbGVzKSB7CiAgICByZXR1cm4gewogICAgICByZXNwb25zZTogewogICAgICAgIGFjdGlvbjogJ2NvbXBsZXRlJywKICAgICAgfQogICAgfTsKICB9CgogIGZvciAoY29uc3QgZmlsZSBvZiBmaWxlcykgewogICAgY29uc3QgbGkgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KCdsaScpOwogICAgbGkuYXBwZW5kKHNwYW4oZmlsZS5uYW1lLCB7Zm9udFdlaWdodDogJ2JvbGQnfSkpOwogICAgbGkuYXBwZW5kKHNwYW4oCiAgICAgICAgYCgke2ZpbGUudHlwZSB8fCAnbi9hJ30pIC0gJHtmaWxlLnNpemV9IGJ5dGVzLCBgICsKICAgICAgICBgbGFzdCBtb2RpZmllZDogJHsKICAgICAgICAgICAgZmlsZS5sYXN0TW9kaWZpZWREYXRlID8gZmlsZS5sYXN0TW9kaWZpZWREYXRlLnRvTG9jYWxlRGF0ZVN0cmluZygpIDoKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgJ24vYSd9IC0gYCkpOwogICAgY29uc3QgcGVyY2VudCA9IHNwYW4oJzAlIGRvbmUnKTsKICAgIGxpLmFwcGVuZENoaWxkKHBlcmNlbnQpOwoKICAgIG91dHB1dEVsZW1lbnQuYXBwZW5kQ2hpbGQobGkpOwoKICAgIGNvbnN0IGZpbGVEYXRhUHJvbWlzZSA9IG5ldyBQcm9taXNlKChyZXNvbHZlKSA9PiB7CiAgICAgIGNvbnN0IHJlYWRlciA9IG5ldyBGaWxlUmVhZGVyKCk7CiAgICAgIHJlYWRlci5vbmxvYWQgPSAoZSkgPT4gewogICAgICAgIHJlc29sdmUoZS50YXJnZXQucmVzdWx0KTsKICAgICAgfTsKICAgICAgcmVhZGVyLnJlYWRBc0FycmF5QnVmZmVyKGZpbGUpOwogICAgfSk7CiAgICAvLyBXYWl0IGZvciB0aGUgZGF0YSB0byBiZSByZWFkeS4KICAgIGxldCBmaWxlRGF0YSA9IHlpZWxkIHsKICAgICAgcHJvbWlzZTogZmlsZURhdGFQcm9taXNlLAogICAgICByZXNwb25zZTogewogICAgICAgIGFjdGlvbjogJ2NvbnRpbnVlJywKICAgICAgfQogICAgfTsKCiAgICAvLyBVc2UgYSBjaHVua2VkIHNlbmRpbmcgdG8gYXZvaWQgbWVzc2FnZSBzaXplIGxpbWl0cy4gU2VlIGIvNjIxMTU2NjAuCiAgICBsZXQgcG9zaXRpb24gPSAwOwogICAgd2hpbGUgKHBvc2l0aW9uIDwgZmlsZURhdGEuYnl0ZUxlbmd0aCkgewogICAgICBjb25zdCBsZW5ndGggPSBNYXRoLm1pbihmaWxlRGF0YS5ieXRlTGVuZ3RoIC0gcG9zaXRpb24sIE1BWF9QQVlMT0FEX1NJWkUpOwogICAgICBjb25zdCBjaHVuayA9IG5ldyBVaW50OEFycmF5KGZpbGVEYXRhLCBwb3NpdGlvbiwgbGVuZ3RoKTsKICAgICAgcG9zaXRpb24gKz0gbGVuZ3RoOwoKICAgICAgY29uc3QgYmFzZTY0ID0gYnRvYShTdHJpbmcuZnJvbUNoYXJDb2RlLmFwcGx5KG51bGwsIGNodW5rKSk7CiAgICAgIHlpZWxkIHsKICAgICAgICByZXNwb25zZTogewogICAgICAgICAgYWN0aW9uOiAnYXBwZW5kJywKICAgICAgICAgIGZpbGU6IGZpbGUubmFtZSwKICAgICAgICAgIGRhdGE6IGJhc2U2NCwKICAgICAgICB9LAogICAgICB9OwogICAgICBwZXJjZW50LnRleHRDb250ZW50ID0KICAgICAgICAgIGAke01hdGgucm91bmQoKHBvc2l0aW9uIC8gZmlsZURhdGEuYnl0ZUxlbmd0aCkgKiAxMDApfSUgZG9uZWA7CiAgICB9CiAgfQoKICAvLyBBbGwgZG9uZS4KICB5aWVsZCB7CiAgICByZXNwb25zZTogewogICAgICBhY3Rpb246ICdjb21wbGV0ZScsCiAgICB9CiAgfTsKfQoKc2NvcGUuZ29vZ2xlID0gc2NvcGUuZ29vZ2xlIHx8IHt9OwpzY29wZS5nb29nbGUuY29sYWIgPSBzY29wZS5nb29nbGUuY29sYWIgfHwge307CnNjb3BlLmdvb2dsZS5jb2xhYi5fZmlsZXMgPSB7CiAgX3VwbG9hZEZpbGVzLAogIF91cGxvYWRGaWxlc0NvbnRpbnVlLAp9Owp9KShzZWxmKTsK",
+              "ok": true,
+              "headers": [
+                [
+                  "content-type",
+                  "application/javascript"
+                ]
+              ],
+              "status": 200,
+              "status_text": ""
+            }
+          },
+          "base_uri": "https://localhost:8080/",
+          "height": 106
+        },
+        "id": "KBkT1fLtqKxA",
+        "outputId": "5e45d996-e561-4274-d282-1e6073c9199a"
+      },
+      "source": [
+        "uploaded = files.upload()"
+      ],
+      "execution_count": 4,
+      "outputs": [
+        {
+          "output_type": "display_data",
+          "data": {
+            "text/html": [
+              "\n",
+              "     <input type=\"file\" id=\"files-d177733e-0098-4b47-8618-978a90161a49\" name=\"files[]\" multiple disabled\n",
+              "        style=\"border:none\" />\n",
+              "     <output id=\"result-d177733e-0098-4b47-8618-978a90161a49\">\n",
+              "      Upload widget is only available when the cell has been executed in the\n",
+              "      current browser session. Please rerun this cell to enable.\n",
+              "      </output>\n",
+              "      <script src=\"/nbextensions/google.colab/files.js\"></script> "
+            ],
+            "text/plain": [
+              "<IPython.core.display.HTML object>"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          }
+        },
+        {
+          "output_type": "stream",
+          "text": [
+            "Saving train_tweets.pkl to train_tweets.pkl\n",
+            "Saving test_tweets.pkl to test_tweets.pkl\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "IwCHyhOPvMTr"
+      },
+      "source": [
+        "df_train = pd.read_pickle(io.BytesIO(uploaded['train_tweets.pkl']))\n",
+        "df_test = pd.read_pickle(io.BytesIO(uploaded['test_tweets.pkl']))"
+      ],
+      "execution_count": 5,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "P0MJFqhVCBOS"
+      },
+      "source": [
+        "le = LabelEncoder()\n",
+        "target_labels_train = df_train['Target']\n",
+        "target_labels_test = df_test['Target']\n",
+        "stance_labels_train = df_train['Stance']\n",
+        "stance_labels_test =   df_test['Stance']\n",
+        "opinion_labels_train = df_train['Opinion Towards']\n",
+        "opinion_labels_test = df_test['Opinion Towards']\n",
+        "\n",
+        "\n",
+        "def one_hot_encoding(label):\n",
+        "        label_le= le.fit_transform(label)\n",
+        "        return label_le\n",
+        "\n",
+        "target_labels_train = one_hot_encoding(target_labels_train)\n",
+        "target_labels_test = one_hot_encoding(target_labels_test)\n",
+        "stance_labels_train = one_hot_encoding(stance_labels_train)\n",
+        "stance_labels_test = one_hot_encoding(stance_labels_test)\n",
+        "opinion_labels_train = one_hot_encoding(opinion_labels_train)\n",
+        "opinion_labels_test  = one_hot_encoding(opinion_labels_test)"
+      ],
+      "execution_count": 6,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "zs8myC9kr-4f",
+        "outputId": "d723a9da-43e5-4f1f-ee6b-9a6412947e73"
+      },
+      "source": [
+        ""
+      ],
+      "execution_count": 31,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array(['Argumentative'], dtype=object)"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 31
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "oibKB9z3qPmg"
+      },
+      "source": [
+        "classifiers = []\n",
+        "classifiers.append(SVC(kernel='rbf'))\n",
+        "classifiers.append(LinearSVC())\n",
+        "classifiers.append(MLPClassifier())\n",
+        "classifiers.append(LogisticRegression(solver='liblinear'))"
+      ],
+      "execution_count": 8,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "yjT8ZVSeqTFi"
+      },
+      "source": [
+        "folds = StratifiedKFold(n_splits = 5, shuffle = True, random_state = 0)\n",
+        "to_join = lambda x : \" \".join(x)\n",
+        "df_train['train'] = df_train.tokenize.apply(to_join)\n",
+        "df_test['test'] = df_test.tokenize.apply(to_join)\n",
+        "Train_X, Test_X, Train_Y, Test_Y = df_train['train'], df_test['test'], opinion_labels_train, opinion_labels_test \n",
+        "Train_Y = np.array(Train_Y)\n",
+        "Test_Y = np.array(Test_Y)\n",
+        "\n",
+        "\n"
+      ],
+      "execution_count": 9,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "UHglK7_1qZyh"
+      },
+      "source": [
+        "## Text Representation Vectors\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "EdDK3J3OqbC8"
+      },
+      "source": [
+        "# # get pretrained models\n",
+        "GLOVE_DIM = 200\n",
+        "FASTTEXT_DIM = 300\n",
+        "WORD2VEC_DIM = 300\n",
+        "\n",
+        "\n"
+      ],
+      "execution_count": 10,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 0,
+          "referenced_widgets": [
+            "27518ccba5414d1c85dcd144c84a7a30",
+            "a830c2c617d04006b9a886d3f392802b",
+            "b52b40fbba024199915c9ed15363917e",
+            "a78f186bc46b4d57a89efbe531a8a474",
+            "8f4a293484c944f2961b5a36eb19eeab",
+            "3ebed2e210184f66a9395075e5809776",
+            "881afae9695c4021ab3b27a84b9cbed9",
+            "9be9b70d21fb42388aba3a406baf565d",
+            "e4cb811defc844489062b2299c0a656d",
+            "098205a6f38e4eefa42fcb42eb9a7608",
+            "4d963b72c9d14a39831bade83a9bf95a",
+            "e04afe30a3014844b5dc48579b94b994",
+            "6476e89ff07f43978f8f3ef5903f0ae5",
+            "30972cebf461476f9459ae6aa97419e4",
+            "73368c975281484f827c3b5ca0b10136",
+            "ab26d9244bdb430092712cbc8e3388d9",
+            "931ab5098d1e475b9a72e7284301df54",
+            "e02b010d3d97477fabce59a467cd3119",
+            "843657080b8344558cdd893162aafc4b",
+            "ab46ffc62a914db78a1d8da8e2462ee5",
+            "74cabccda38746c291287496bff5f469",
+            "4004d468f67b40f2bb904ca3c4e71b9d",
+            "81f584850e764e988c0ad92103e643f9",
+            "d2d4db722e534e149701bb74e98a2f53",
+            "4a1f19024c9842718655a1834f175b26",
+            "4f9a4b19879e45f895c7c1f86a68e5f6",
+            "046905eee5bc4e5ca1e47a36de4327ab",
+            "3440c807d97046058566c168199ce03f",
+            "54877e93cef74a7aa45cef28866ad080",
+            "91a1a8dd42784326bf9cd474aa342440",
+            "0b9cc571c9d2491887e892655cc8fa37",
+            "2dac63d21a50417baff336dfc9ac86a0",
+            "74896149ce23468981574139d9ab5d9a",
+            "e94ab601c2b54d829f390baad5186f3d",
+            "35567782199842d1bc9eca004c1fd87a",
+            "3f0134b2f81c4ccbb13c2d084565e43c",
+            "5259a6bcefdc42059df653c07562dd57",
+            "80a6f13efd424b30844f770dff1d978c",
+            "77e47cc1962b470b85cdeaebede18df4",
+            "50de492889414bbf9a2ed9ea0a8ed60d"
+          ]
+        },
+        "id": "CGpztwJn2_M2",
+        "outputId": "27c59cb4-3a01-4c78-87c1-34761067934b"
+      },
+      "source": [
+        "bert_emb = SentenceTransformerDocumentEmbeddings('roberta-base')\n",
+        "model_w2v = KeyedVectors.load_word2vec_format('/content/drive/MyDrive/GoogleNews-vectors-negative300.bin', binary=True)\n",
+        "model_glove =pd.read_pickle('/content/drive/MyDrive/glove_dict.pickle')"
+      ],
+      "execution_count": 11,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "Exception when trying to download http://sbert.net/models/roberta-base.zip. Response 404\n",
+            "SentenceTransformer-Model http://sbert.net/models/roberta-base.zip not found. Try to create it from scratch\n",
+            "Try to create Transformer Model roberta-base with mean pooling\n"
+          ],
+          "name": "stderr"
+        },
+        {
+          "output_type": "display_data",
+          "data": {
+            "application/vnd.jupyter.widget-view+json": {
+              "model_id": "27518ccba5414d1c85dcd144c84a7a30",
+              "version_minor": 0,
+              "version_major": 2
+            },
+            "text/plain": [
+              "HBox(children=(FloatProgress(value=0.0, description='Downloading', max=481.0, style=ProgressStyle(description_…"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          }
+        },
+        {
+          "output_type": "stream",
+          "text": [
+            "\n"
+          ],
+          "name": "stdout"
+        },
+        {
+          "output_type": "display_data",
+          "data": {
+            "application/vnd.jupyter.widget-view+json": {
+              "model_id": "e4cb811defc844489062b2299c0a656d",
+              "version_minor": 0,
+              "version_major": 2
+            },
+            "text/plain": [
+              "HBox(children=(FloatProgress(value=0.0, description='Downloading', max=501200538.0, style=ProgressStyle(descri…"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          }
+        },
+        {
+          "output_type": "stream",
+          "text": [
+            "\n"
+          ],
+          "name": "stdout"
+        },
+        {
+          "output_type": "stream",
+          "text": [
+            "Some weights of the model checkpoint at roberta-base were not used when initializing RobertaModel: ['lm_head.layer_norm.bias', 'lm_head.dense.bias', 'lm_head.dense.weight', 'lm_head.layer_norm.weight', 'lm_head.bias', 'lm_head.decoder.weight']\n",
+            "- This IS expected if you are initializing RobertaModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).\n",
+            "- This IS NOT expected if you are initializing RobertaModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).\n"
+          ],
+          "name": "stderr"
+        },
+        {
+          "output_type": "display_data",
+          "data": {
+            "application/vnd.jupyter.widget-view+json": {
+              "model_id": "931ab5098d1e475b9a72e7284301df54",
+              "version_minor": 0,
+              "version_major": 2
+            },
+            "text/plain": [
+              "HBox(children=(FloatProgress(value=0.0, description='Downloading', max=898823.0, style=ProgressStyle(descripti…"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          }
+        },
+        {
+          "output_type": "stream",
+          "text": [
+            "\n"
+          ],
+          "name": "stdout"
+        },
+        {
+          "output_type": "display_data",
+          "data": {
+            "application/vnd.jupyter.widget-view+json": {
+              "model_id": "4a1f19024c9842718655a1834f175b26",
+              "version_minor": 0,
+              "version_major": 2
+            },
+            "text/plain": [
+              "HBox(children=(FloatProgress(value=0.0, description='Downloading', max=456318.0, style=ProgressStyle(descripti…"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          }
+        },
+        {
+          "output_type": "stream",
+          "text": [
+            "\n"
+          ],
+          "name": "stdout"
+        },
+        {
+          "output_type": "display_data",
+          "data": {
+            "application/vnd.jupyter.widget-view+json": {
+              "model_id": "74896149ce23468981574139d9ab5d9a",
+              "version_minor": 0,
+              "version_major": 2
+            },
+            "text/plain": [
+              "HBox(children=(FloatProgress(value=0.0, description='Downloading', max=1355863.0, style=ProgressStyle(descript…"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          }
+        },
+        {
+          "output_type": "stream",
+          "text": [
+            "\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "R2Ea9clqmrJJ"
+      },
+      "source": [
+        "### Word embeddings with tf-idf scaling"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "WJztO0_Ami3J"
+      },
+      "source": [
+        "# function to get tfidf * word emb vector \n",
+        "def tfidf_scaled_wv(data,model,dim):\n",
+        "    text = []\n",
+        "    for i in data['tokenize']:\n",
+        "        string = ' '.join(i)\n",
+        "        text.append(string)\n",
+        "    tfidf = TfidfVectorizer(stop_words =None)\n",
+        "    tf_idf_tr = tfidf.fit_transform(text)\n",
+        "    feature_names = tfidf.get_feature_names()\n",
+        "    sentences = data['tokenize'].values\n",
+        "    data_dtm = pd.DataFrame(tf_idf_tr.toarray(), columns = feature_names)\n",
+        "    tfidf_sent_vectors = [] \n",
+        "    row = 0\n",
+        "    for sentence in sentences:\n",
+        "        sent_vec = np.zeros(dim)\n",
+        "        weight_sum = 0\n",
+        "        for word in sentence:\n",
+        "            try:\n",
+        "                vec = model[word]\n",
+        "                tfidf = data_dtm.iloc[row][word]\n",
+        "                sent_vec += (vec * tfidf)\n",
+        "                weight_sum += tfidf\n",
+        "            except:\n",
+        "                pass\n",
+        "            # check if weight_sum is zero meaning all words in that tweet gave no context \n",
+        "        if weight_sum != 0:     \n",
+        "            sent_vec  /= weight_sum     \n",
+        "        tfidf_sent_vectors.append(sent_vec)\n",
+        "        row+=1\n",
+        "    return tfidf_sent_vectors\n",
+        "    \n",
+        "    "
+      ],
+      "execution_count": 12,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "VYu9X89Smz5K"
+      },
+      "source": [
+        "### Sentence embedding BERT "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "3g6GtT4Em3gM"
+      },
+      "source": [
+        "def get_embeddings(text):\n",
+        "    sentence = Sentence(text)\n",
+        "    bert_emb.embed(sentence)\n",
+        "    return sentence.embedding\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "def sentence_vec(data):\n",
+        "    # the returned embedding is a tensor so we used the pytorch method to detach into a numpy array\n",
+        "    detach = lambda x : x.detach().numpy()\n",
+        "    emb  = lambda x : get_embeddings(x)\n",
+        "    data['sen_emb'] = data.Processed_Tweet.apply(emb)\n",
+        "    data['sen_emb'] = data.sen_emb.apply(detach)\n",
+        "#     data['sen_emb'] = data.sen_emb.apply(lambda x: np.array(x))"
+      ],
+      "execution_count": 13,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "EjUCnZv2rbQw"
+      },
+      "source": [
+        "def apply_embeddings(df_train,df_test,model,dim):\n",
+        "   train_emb = tfidf_scaled_wv(df_train,model,dim)\n",
+        "   test_emb = tfidf_scaled_wv(df_test,model,dim)\n",
+        "   return np.array(train_emb), np.array(test_emb)\n",
+        "\n",
+        "\n",
+        "def apply_sentence_embeddings(df_train,df_test):\n",
+        "    sentence_vec(df_train)\n",
+        "    sentence_vec(df_test)\n",
+        "   \n",
+        "  "
+      ],
+      "execution_count": 14,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "kqSJOAWz3UkN"
+      },
+      "source": [
+        "def hashtag_vectorizer(df_train,df_test):\n",
+        "     dummy_train = df_train.Hashtag.apply(lambda x : ' '.join(x))   \n",
+        "     dummy_test = df_test.Hashtag.apply(lambda x : ' '.join(x)) \n",
+        "\n",
+        "     cv = CountVectorizer(binary=True,ngram_range=(1,1),analyzer ='word')\n",
+        "     cv_hashtag_train = cv.fit_transform(dummy_train)\n",
+        "     cv_hashtag_test = cv.transform(dummy_test)\n",
+        "     names = cv.get_feature_names()\n",
+        "\n",
+        "     return cv_hashtag_train, cv_hashtag_test, names"
+      ],
+      "execution_count": 15,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "r37iDFkxYjF5"
+      },
+      "source": [
+        "apply_sentence_embeddings(df_train,df_test)  "
+      ],
+      "execution_count": 16,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "Ytat_8qRRqPo"
+      },
+      "source": [
+        "## Feature Engineering"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "m-adTA_t3KTe"
+      },
+      "source": [
+        "POS_ratio_train = df_train[['RatioADJ','RatioADP','RatioADV','RatioAUXCONJ',\n",
+        "                      'RatioDET','RatioINTJ','RatioNOUN','RatioNUM',\n",
+        "                      'RatioPART','RatioPRON','RatioPROPN','RatioPUNCT',\n",
+        "                      'RatioSCONJ','RatioSYM','RatioVERB','RatioX']].values\n",
+        "\n",
+        "POS_ratio_test =  df_test[['RatioADJ','RatioADP','RatioADV','RatioAUXCONJ',\n",
+        "                      'RatioDET','RatioINTJ','RatioNOUN','RatioNUM',\n",
+        "                      'RatioPART','RatioPRON','RatioPROPN','RatioPUNCT',\n",
+        "                      'RatioSCONJ','RatioSYM','RatioVERB','RatioX']].values"
+      ],
+      "execution_count": 17,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "UPAq7OsyCnLZ"
+      },
+      "source": [
+        "def unigram_features(df_train,df_test):\n",
+        "    cv = CountVectorizer(binary=True,ngram_range=(1,1),analyzer ='word')\n",
+        "    cv_train = cv.fit_transform(Train_X)\n",
+        "    cv_test = cv.transform(Test_X)\n",
+        "    return cv_train , cv_test"
+      ],
+      "execution_count": 18,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "LL3w0ej1LDx6"
+      },
+      "source": [
+        "def bigram_features(df_train,df_test):\n",
+        "    cv = CountVectorizer(binary=True,ngram_range=(1,2),analyzer ='word')\n",
+        "    cv_train = cv.fit_transform(Train_X)\n",
+        "    cv_test = cv.transform(Test_X)\n",
+        "    return cv_train , cv_test"
+      ],
+      "execution_count": 19,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "yj_MneYlLMN2"
+      },
+      "source": [
+        "def trigram_features(df_train,df_test):\n",
+        "    cv = CountVectorizer(binary=True,ngram_range=(1,3),analyzer ='word')\n",
+        "    cv_train = cv.fit_transform(Train_X)\n",
+        "    cv_test = cv.transform(Test_X)\n",
+        "    names = cv.get_feature_names()\n",
+        "    return cv_train , cv_test,names"
+      ],
+      "execution_count": 20,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "BdIVGQFARs7l"
+      },
+      "source": [
+        "#create vector made of of count vectorizer 1,3 n grams word with POS tags ratios \n",
+        "# Hashtags unigram vectorizer \n",
+        "def bag_of_words_POSratio_Hashtag(df_train,df_test):\n",
+        "\n",
+        "    Ntrain_tags = df_train[['num#']].values\n",
+        "    Ntest_tags = df_test[['num#']].values\n",
+        "                                        \n",
+        "    cv_hashtag_train ,cv_hashtag_test = hashtag_vectorizer(df_train,df_test)\n",
+        "\n",
+        "    cv_train, cv_test = trigram_features(df_train,df_test)\n",
+        "\n",
+        "    combined_features_train = hstack([cv_train, cv_hashtag_train], 'csr')\n",
+        "    combined_features_train = hstack([combined_features_train,\n",
+        "                                     POS_ratio_train],'csr' )\n",
+        "   \n",
+        "   \n",
+        "    combined_features_test = hstack([cv_test, cv_hashtag_test], 'csr')\n",
+        "    combined_features_test = hstack([combined_features_test,\n",
+        "                                     POS_ratio_test],'csr' )\n",
+        "    \n",
+        "\n",
+        "   \n",
+        "   \n",
+        "    return combined_features_train , combined_features_test\n",
+        "\n",
+        "\n",
+        "def BOW_Hashtag(df_train,df_test):\n",
+        "    cv_train, cv_test ,names = trigram_features(df_train,df_test)\n",
+        "    cv_hashtag_train ,cv_hashtag_test,names1 = hashtag_vectorizer(df_train,df_test)\n",
+        "    combined_features_train = hstack([cv_train, cv_hashtag_train], 'csr')\n",
+        "    combined_features_test = hstack([cv_test, cv_hashtag_test], 'csr')\n",
+        "    all_features = []\n",
+        "    for n in names:\n",
+        "      all_features.append(n)\n",
+        "    for n in names1:\n",
+        "      all_features.append(n)\n",
+        "    \n",
+        "    return combined_features_train , combined_features_test , all_features\n",
+        "\n",
+        "\n",
+        "   "
+      ],
+      "execution_count": 21,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "ecLhcgJSkRLB"
+      },
+      "source": [
+        "def word_embeddings_POSratio_Hashtag(df_train,df_test,emb_train,emb_test):\n",
+        "\n",
+        "    Ntrain_tags = df_train[['num#']].values\n",
+        "    Ntest_tags = df_test[['num#']].values\n",
+        "                                        \n",
+        "    cv_hashtag_train ,cv_hashtag_test = hashtag_vectorizer(df_train,df_test)\n",
+        "\n",
+        "  \n",
+        "    combined_features_train = hstack([emb_train, cv_hashtag_train], 'csr')\n",
+        "    combined_features_train = hstack([combined_features_train,\n",
+        "                                     POS_ratio_train],'csr' )\n",
+        "    \n",
+        "\n",
+        "    combined_features_test = hstack([emb_test, cv_hashtag_test], 'csr')\n",
+        "    combined_features_test = hstack([combined_features_test,\n",
+        "                                     POS_ratio_test],'csr' )\n",
+        "    \n",
+        "\n",
+        "\n",
+        "    return combined_features_train , combined_features_test\n",
+        "\n",
+        "\n",
+        "   \n",
+        "def word_emb_Hashtag(df_train,df_test,emb_train,emb_test):\n",
+        "    cv_hashtag_train ,cv_hashtag_test = hashtag_vectorizer(df_train,df_test)\n",
+        "    combined_features_train = hstack([emb_train, cv_hashtag_train], 'csr')\n",
+        "    combined_features_test = hstack([emb_test, cv_hashtag_test], 'csr')\n",
+        "    return combined_features_train, combined_features_test\n",
+        "    "
+      ],
+      "execution_count": 22,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "WT2kc2YzmApJ"
+      },
+      "source": [
+        "def sentence_embeddings_POSratio_Hashtag(df_train,df_test,emb_train,emb_test):\n",
+        "   \n",
+        "     Ntrain_tags = df_train[['num#']].values\n",
+        "     Ntest_tags = df_test[['num#']].values\n",
+        "                                        \n",
+        "     cv_hashtag_train ,cv_hashtag_test = hashtag_vectorizer(df_train,df_test)\n",
+        "\n",
+        "     combined_features_train = hstack([emb_train, cv_hashtag_train], 'csr')\n",
+        "     combined_features_train = hstack([combined_features_train,\n",
+        "                                     POS_ratio_train],'csr' )\n",
+        "     \n",
+        "\n",
+        "    \n",
+        "\n",
+        "     combined_features_test = hstack([emb_test, cv_hashtag_test], 'csr')\n",
+        "     combined_features_test = hstack([combined_features_test,\n",
+        "                                     POS_ratio_test],'csr' )\n",
+        "\n",
+        "     return combined_features_train , combined_features_test\n",
+        "\n",
+        " \n",
+        "\n",
+        "def bert_Hashtag(df_train,df_test,emb_train,emb_test):\n",
+        "    cv_hashtag_train ,cv_hashtag_test = hashtag_vectorizer(df_train,df_test)\n",
+        "    combined_features_train = hstack([emb_train, cv_hashtag_train], 'csr')\n",
+        "    combined_features_test = hstack([emb_test, cv_hashtag_test], 'csr')\n",
+        "    return combined_features_train, combined_features_test \n"
+      ],
+      "execution_count": 23,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "iMBFDCoFnPSU"
+      },
+      "source": [
+        "### Basic Classifiers Run"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "APSLT_OvnRcS"
+      },
+      "source": [
+        "def basic_classifier_tester(classifiers,X_train,Y_train,X_test,Y_test):\n",
+        "    report_scores = {}\n",
+        "    for classifier in (classifiers):\n",
+        "        classifier.fit(X_train, Y_train)\n",
+        "        predictions = classifier.predict(X_test)\n",
+        "        report = classification_report(Y_test, predictions,output_dict=True)\n",
+        "        report_scores[classifier.__class__.__name__] = report\n",
+        "    return report_scores\n",
+        "\n",
+        "\n",
+        "\n",
+        "def evaluate_models_hashtag_vectorizer(df_train,df_test):\n",
+        "     train_x , valid_x = hashtag_vectorizer(df_train,df_test)\n",
+        "     scores = basic_classifier_tester(classifiers,train_x,Train_Y,valid_x,Test_Y)\n",
+        "     return scores\n",
+        "\n",
+        "\n",
+        "def evaluate_models_Feature_Eng_BOW(df_train,df_test):\n",
+        "      train_x , valid_x = bag_of_words_POSratio_Hashtag(df_train,df_test)\n",
+        "      scores = basic_classifier_tester(classifiers,train_x,Train_Y,valid_x,Test_Y)\n",
+        "      return scores\n",
+        "\n",
+        "\n",
+        "def evaluate_models_Feature_Eng_w2v(df_train,df_test):\n",
+        "     train_emb , valid_emb = apply_embeddings(df_train,df_test,model_w2v,300)\n",
+        "     train_x , valid_x = word_embeddings_POSratio_Hashtag(df_train,df_test,train_emb,valid_emb)\n",
+        "     scores = basic_classifier_tester(classifiers,train_x,Train_Y,valid_x,Test_Y) \n",
+        "     return scores\n",
+        "\n",
+        "\n",
+        "def evaluate_models_Feature_Eng_glove(df_train,df_test):\n",
+        "     train_emb , valid_emb = apply_embeddings(df_train,df_test,model_glove,200)\n",
+        "     train_x , valid_x = word_embeddings_POSratio_Hashtag(df_train,df_test,train_emb,valid_emb)\n",
+        "     scores = basic_classifier_tester(classifiers,train_x,Train_Y,valid_x,Test_Y)\n",
+        "     return scores\n",
+        "\n",
+        "\n",
+        "def evaluate_models_Feature_Eng_fasttext():\n",
+        "     train_emb , valid_emb = apply_embeddings(df_train,df_test,model_fasttext)\n",
+        "     train_x , valid_x = word_embeddings_POSratio_Hashtag(df_train,df_test,train_emb,valid_emb)\n",
+        "     scores = basic_classifier_tester(classifiers,train_x,train_Y,valid_x,test_Y) \n",
+        "     return scores\n",
+        "    \n",
+        "\n",
+        "def evaluate_models_Feature_Eng_BERT(df_train,df_test):\n",
+        "  train_emb  =  np.array(df_train['sen_emb'].tolist())\n",
+        "  valid_emb = np.array(df_test['sen_emb'].tolist())\n",
+        "  train_x , valid_x = sentence_embeddings_POSratio_Hashtag(df_train,df_test,train_emb,valid_emb)\n",
+        "  scores = basic_classifier_tester(classifiers,train_x,Train_Y,valid_x,Test_Y) \n",
+        "  return scores\n",
+        "\n",
+        "\n",
+        "def evaluate_models_Feature_Eng_trigram(df_train,df_test):\n",
+        "   train_x , valid_x = trigram_features(df_train,df_test)\n",
+        "   scores = basic_classifier_tester(classifiers,train_x,Train_Y,valid_x,Test_Y) \n",
+        "   return scores\n",
+        "\n",
+        "\n",
+        "\n",
+        "def evaluate_BOW_Hashtag(df_train,df_test):\n",
+        "     train_x , valid_x = BOW_Hashtag(df_train,df_test)\n",
+        "     scores = basic_classifier_tester(classifiers,train_x,Train_Y,valid_x,Test_Y) \n",
+        "     return scores\n",
+        "\n",
+        "def evaluate_w2v_emb_Hashtag(df_train,df_test):\n",
+        "    train_emb , valid_emb = apply_embeddings(df_train,df_test,model_w2v,300)\n",
+        "    train_x , valid_x = word_emb_Hashtag(df_train,df_test,train_emb,valid_emb)\n",
+        "    scores = basic_classifier_tester(classifiers,train_x,Train_Y,valid_x,Test_Y) \n",
+        "    return scores\n",
+        "\n",
+        "def evaluate_bert_emb_Hashtag(df_train,df_test):\n",
+        "    train_emb  =  np.array(df_train['sen_emb'].tolist())\n",
+        "    valid_emb = np.array(df_test['sen_emb'].tolist())\n",
+        "    train_x, valid_x = bert_Hashtag(df_train,df_test,train_emb,valid_emb)\n",
+        "    scores = basic_classifier_tester(classifiers,train_x,Train_Y,valid_x,Test_Y) \n",
+        "    return scores\n",
+        "\n",
+        "def evaluate_glove_emb_Hashtag(df_train,df_test):\n",
+        "    train_emb , valid_emb = apply_embeddings(df_train,df_test,model_glove,200)\n",
+        "    train_x , valid_x = word_emb_Hashtag(df_train,df_test,train_emb,valid_emb)\n",
+        "    scores = basic_classifier_tester(classifiers,train_x,Train_Y,valid_x,Test_Y) \n",
+        "    return scores\n",
+        "\n"
+      ],
+      "execution_count": 24,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "jbvDNiHfXsCT"
+      },
+      "source": [
+        "## Run All Models"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "kD48us_EXt42"
+      },
+      "source": [
+        "targets = ['hil','cc','ab','ath','fm','all']\n",
+        "\n",
+        "def run_all_models(df_train,df_test,Train_Y,Test_Y):\n",
+        "  # first batch\n",
+        "    scores = []\n",
+        "    s = evaluate_models_Feature_Eng_trigram(df_train,df_test)\n",
+        "    scores.append(s)\n",
+        "    w2v_train , w2v_valid = apply_embeddings(df_train,df_test,model_w2v,300)\n",
+        "    s = basic_classifier_tester(classifiers,w2v_train,Train_Y,w2v_valid,Test_Y)\n",
+        "    scores.append(s)\n",
+        "    glove_train , glove_valid = apply_embeddings(df_train,df_test,model_glove,200)\n",
+        "    s = basic_classifier_tester(classifiers,glove_train,Train_Y,glove_valid,Test_Y)\n",
+        "    scores.append(s)\n",
+        "    train_emb  =  np.array(df_train['sen_emb'].tolist())\n",
+        "    valid_emb = np.array(df_test['sen_emb'].tolist())\n",
+        "    s = basic_classifier_tester(classifiers,train_emb,Train_Y,valid_emb,Test_Y)\n",
+        "    scores.append(s)\n",
+        "    # second batch\n",
+        "    s = evaluate_BOW_Hashtag(df_train,df_test)\n",
+        "    scores.append(s)\n",
+        "    s = evaluate_w2v_emb_Hashtag(df_train,df_test)\n",
+        "    scores.append(s)\n",
+        "    s = evaluate_glove_emb_Hashtag(df_train,df_test)\n",
+        "    scores.append(s)\n",
+        "    s = evaluate_bert_emb_Hashtag(df_train,df_test)\n",
+        "    scores.append(s)\n",
+        "    # third batch\n",
+        "    s = evaluate_models_Feature_Eng_BOW(df_train,df_test)\n",
+        "    scores.append(s)\n",
+        "    s = evaluate_models_Feature_Eng_w2v(df_train,df_test)\n",
+        "    scores.append(s)\n",
+        "    s = evaluate_models_Feature_Eng_glove(df_train,df_test)\n",
+        "    scores.append(s)\n",
+        "    s = evaluate_models_Feature_Eng_BERT(df_train,df_test)\n",
+        "    scores.append(s)\n",
+        "    return scores\n",
+        "\n",
+        "def put_scores(s):\n",
+        "    scores = {}\n",
+        "    scores['ngram'] = s[0]\n",
+        "    scores['w2v'] = s[1]\n",
+        "    scores['glove'] = s[2]\n",
+        "    scores['BERT'] = s[3]\n",
+        "    scores['ngram_hashtag'] = s[4]\n",
+        "    scores['w2v_hashtag'] = s[5]\n",
+        "    scores['glove_hashtag'] = s[6]\n",
+        "    scores['bert_hashtag'] = s[7]\n",
+        "    scores['ngram_all'] = s[8]\n",
+        "    scores['w2v_all'] = s[9]\n",
+        "    scores['glove_all'] = s[10]\n",
+        "    scores['bert_all'] = s[11]\n",
+        "    return scores\n",
+        "\n",
+        "def Evaluation():\n",
+        "   dicts = {}\n",
+        "   print('Evaluation beginning /////////////////////////')\n",
+        "   scores = run_all_models(df_train,df_test,Train_Y,Test_Y)\n",
+        "   scores  = put_scores(scores)\n",
+        "   dicts['All'] = scores\n",
+        "   print('Evaluation completed ////////////////////////')\n",
+        "   return dicts\n"
+      ],
+      "execution_count": 25,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "_F7mo71Nv2Jb",
+        "outputId": "8e089f5f-2b16-4ad5-f79f-de2dcf6e9b56"
+      },
+      "source": [
+        "evaluation =Evaluation()"
+      ],
+      "execution_count": 25,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "Evaluation beginning /////////////////////////\n"
+          ],
+          "name": "stdout"
+        },
+        {
+          "output_type": "stream",
+          "text": [
+            "/usr/local/lib/python3.7/dist-packages/sklearn/neural_network/_multilayer_perceptron.py:571: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.\n",
+            "  % self.max_iter, ConvergenceWarning)\n",
+            "/usr/local/lib/python3.7/dist-packages/sklearn/svm/_base.py:947: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.\n",
+            "  \"the number of iterations.\", ConvergenceWarning)\n",
+            "/usr/local/lib/python3.7/dist-packages/sklearn/neural_network/_multilayer_perceptron.py:571: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.\n",
+            "  % self.max_iter, ConvergenceWarning)\n",
+            "/usr/local/lib/python3.7/dist-packages/sklearn/svm/_base.py:947: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.\n",
+            "  \"the number of iterations.\", ConvergenceWarning)\n",
+            "/usr/local/lib/python3.7/dist-packages/sklearn/neural_network/_multilayer_perceptron.py:571: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.\n",
+            "  % self.max_iter, ConvergenceWarning)\n",
+            "/usr/local/lib/python3.7/dist-packages/sklearn/neural_network/_multilayer_perceptron.py:571: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.\n",
+            "  % self.max_iter, ConvergenceWarning)\n",
+            "/usr/local/lib/python3.7/dist-packages/sklearn/neural_network/_multilayer_perceptron.py:571: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.\n",
+            "  % self.max_iter, ConvergenceWarning)\n",
+            "/usr/local/lib/python3.7/dist-packages/sklearn/svm/_base.py:947: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.\n",
+            "  \"the number of iterations.\", ConvergenceWarning)\n",
+            "/usr/local/lib/python3.7/dist-packages/sklearn/neural_network/_multilayer_perceptron.py:571: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.\n",
+            "  % self.max_iter, ConvergenceWarning)\n",
+            "/usr/local/lib/python3.7/dist-packages/sklearn/svm/_base.py:947: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.\n",
+            "  \"the number of iterations.\", ConvergenceWarning)\n",
+            "/usr/local/lib/python3.7/dist-packages/sklearn/svm/_base.py:947: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.\n",
+            "  \"the number of iterations.\", ConvergenceWarning)\n",
+            "/usr/local/lib/python3.7/dist-packages/sklearn/svm/_base.py:947: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.\n",
+            "  \"the number of iterations.\", ConvergenceWarning)\n",
+            "/usr/local/lib/python3.7/dist-packages/sklearn/svm/_base.py:947: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.\n",
+            "  \"the number of iterations.\", ConvergenceWarning)\n"
+          ],
+          "name": "stderr"
+        },
+        {
+          "output_type": "stream",
+          "text": [
+            "Evaluation completed ////////////////////////\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "FD3A87rWOOHT"
+      },
+      "source": [
+        "with open('evaluation_arguments.pickle', 'wb') as handle:\n",
+        "    pickle.dump(evaluation, handle, protocol=pickle.HIGHEST_PROTOCOL)"
+      ],
+      "execution_count": 26,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "y_-ikXmfVn_z"
+      },
+      "source": [
+        "### Error Analysis "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "2vXdEGP9TZ4J"
+      },
+      "source": [
+        "def misclassification(clf,df_test):\n",
+        "   #index of misclassifications\n",
+        "   y_pred = clf.predict(Test_X)\n",
+        "   correct = y_pred == Test_Y\n",
+        "   df_test['Classified'] = correct\n",
+        "   classified = df_test[['Tweet','Classified','Target','Opinion Towards']]\n",
+        "   return classified "
+      ],
+      "execution_count": 27,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "cuB6NeO1VgZn"
+      },
+      "source": [
+        "evaluation_argument = pd.read_pickle('/content/evaluation_arguments.pickle')"
+      ],
+      "execution_count": 28,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "npTmM7Us6jKv",
+        "outputId": "aa36b05f-62a5-49a3-9e5d-a9683d4d8841"
+      },
+      "source": [
+        "evaluation_argument['All']['ngram_hashtag']['LinearSVC']"
+      ],
+      "execution_count": 65,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "{'0': {'f1-score': 0.6279069767441862,\n",
+              "  'precision': 0.7074235807860262,\n",
+              "  'recall': 0.5644599303135889,\n",
+              "  'support': 1148},\n",
+              " '1': {'f1-score': 0.5844155844155845,\n",
+              "  'precision': 0.5192307692307693,\n",
+              "  'recall': 0.6683168316831684,\n",
+              "  'support': 808},\n",
+              " 'accuracy': 0.6073619631901841,\n",
+              " 'macro avg': {'f1-score': 0.6061612805798853,\n",
+              "  'precision': 0.6133271750083977,\n",
+              "  'recall': 0.6163883809983786,\n",
+              "  'support': 1956},\n",
+              " 'weighted avg': {'f1-score': 0.6099412073160113,\n",
+              "  'precision': 0.6296834009615642,\n",
+              "  'recall': 0.6073619631901841,\n",
+              "  'support': 1956}}"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 65
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "kjaVHwwyRPwG"
+      },
+      "source": [
+        ""
+      ],
+      "execution_count": 70,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "0CmUJ4X4g1eg"
+      },
+      "source": [
+        "def finetune_linearsvc(Train_X,Train_Y,Test_X,Test_Y):\n",
+        "    C = [2**(-3),2**(-2),2**(-1),1,2,4,8,16,32,100,1000] \n",
+        "    parameter_space = [ {'C': C}]\n",
+        "    clf_svm_linear = GridSearchCV(LinearSVC(), \n",
+        "                               parameter_space,  \n",
+        "                               cv =folds,\n",
+        "                               n_jobs=-1,\n",
+        "                               verbose=True    \n",
+        "                              )    \n",
+        "\n",
+        "    t0 =time.time()\n",
+        "# fit the model\n",
+        "    clf_svm_linear.fit(Train_X, Train_Y)\n",
+        "    t1= time.time()\n",
+        "    print(\"training time:\", round(t1-t0, 3), \"s\") # the time would be round to 3 decimal in seconds\n",
+        "    print(clf_svm_linear.best_params_)\n",
+        "\n",
+        "    svm = LinearSVC(C = clf_svm_linear.best_params_['C'],max_iter=1500)\n",
+        "    svm.fit(Train_X, Train_Y)\n",
+        "    predictions = svm.predict(Test_X)\n",
+        "    report = classification_report(Test_Y, predictions,output_dict=True)\n",
+        "    return predictions, svm\n",
+        "    "
+      ],
+      "execution_count": 27,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "__pgUOC7QSZA"
+      },
+      "source": [
+        "\n",
+        "from sklearn.model_selection import learning_curve\n",
+        "\n",
+        "train, test , names = BOW_Hashtag(df_train,df_test)\n",
+        "\n",
+        "\n",
+        "\n",
+        "estimator =  LinearSVC()\n",
+        "def plot_learning_curve(estimator, title, X, y, axes=None, ylim=None, cv=None,\n",
+        "                        n_jobs=None, train_sizes=np.linspace(.1, 1.0, 5)):\n",
+        "    \"\"\"\n",
+        "    Generate 3 plots: the test and training learning curve, the training\n",
+        "    samples vs fit times curve, the fit times vs score curve.\n",
+        "\n",
+        "    Parameters\n",
+        "    ----------\n",
+        "    estimator : estimator instance\n",
+        "        An estimator instance implementing `fit` and `predict` methods which\n",
+        "        will be cloned for each validation.\n",
+        "\n",
+        "    title : str\n",
+        "        Title for the chart.\n",
+        "\n",
+        "    X : array-like of shape (n_samples, n_features)\n",
+        "        Training vector, where ``n_samples`` is the number of samples and\n",
+        "        ``n_features`` is the number of features.\n",
+        "\n",
+        "    y : array-like of shape (n_samples) or (n_samples, n_features)\n",
+        "        Target relative to ``X`` for classification or regression;\n",
+        "        None for unsupervised learning.\n",
+        "\n",
+        "    axes : array-like of shape (3,), default=None\n",
+        "        Axes to use for plotting the curves.\n",
+        "\n",
+        "    ylim : tuple of shape (2,), default=None\n",
+        "        Defines minimum and maximum y-values plotted, e.g. (ymin, ymax).\n",
+        "\n",
+        "    cv : int, cross-validation generator or an iterable, default=None\n",
+        "        Determines the cross-validation splitting strategy.\n",
+        "        Possible inputs for cv are:\n",
+        "\n",
+        "          - None, to use the default 5-fold cross-validation,\n",
+        "          - integer, to specify the number of folds.\n",
+        "          - :term:`CV splitter`,\n",
+        "          - An iterable yielding (train, test) splits as arrays of indices.\n",
+        "\n",
+        "        For integer/None inputs, if ``y`` is binary or multiclass,\n",
+        "        :class:`StratifiedKFold` used. If the estimator is not a classifier\n",
+        "        or if ``y`` is neither binary nor multiclass, :class:`KFold` is used.\n",
+        "\n",
+        "        Refer :ref:`User Guide <cross_validation>` for the various\n",
+        "        cross-validators that can be used here.\n",
+        "\n",
+        "    n_jobs : int or None, default=None\n",
+        "        Number of jobs to run in parallel.\n",
+        "        ``None`` means 1 unless in a :obj:`joblib.parallel_backend` context.\n",
+        "        ``-1`` means using all processors. See :term:`Glossary <n_jobs>`\n",
+        "        for more details.\n",
+        "\n",
+        "    train_sizes : array-like of shape (n_ticks,)\n",
+        "        Relative or absolute numbers of training examples that will be used to\n",
+        "        generate the learning curve. If the ``dtype`` is float, it is regarded\n",
+        "        as a fraction of the maximum size of the training set (that is\n",
+        "        determined by the selected validation method), i.e. it has to be within\n",
+        "        (0, 1]. Otherwise it is interpreted as absolute sizes of the training\n",
+        "        sets. Note that for classification the number of samples usually have\n",
+        "        to be big enough to contain at least one sample from each class.\n",
+        "        (default: np.linspace(0.1, 1.0, 5))\n",
+        "    \"\"\"\n",
+        "    if axes is None:\n",
+        "        _, axes = plt.subplots(1, 3, figsize=(20, 5))\n",
+        "\n",
+        "    axes[0].set_title(title)\n",
+        "    if ylim is not None:\n",
+        "        axes[0].set_ylim(*ylim)\n",
+        "    axes[0].set_xlabel(\"Training examples\")\n",
+        "    axes[0].set_ylabel(\"Score\")\n",
+        "\n",
+        "    train_sizes, train_scores, test_scores, fit_times, _ = \\\n",
+        "        learning_curve(estimator, X, y, cv=cv, n_jobs=n_jobs,\n",
+        "                       train_sizes=train_sizes,\n",
+        "                       return_times=True)\n",
+        "    train_scores_mean = np.mean(train_scores, axis=1)\n",
+        "    train_scores_std = np.std(train_scores, axis=1)\n",
+        "    test_scores_mean = np.mean(test_scores, axis=1)\n",
+        "    test_scores_std = np.std(test_scores, axis=1)\n",
+        "    fit_times_mean = np.mean(fit_times, axis=1)\n",
+        "    fit_times_std = np.std(fit_times, axis=1)\n",
+        "\n",
+        "    # Plot learning curve\n",
+        "    axes[0].grid()\n",
+        "    axes[0].fill_between(train_sizes, train_scores_mean - train_scores_std,\n",
+        "                         train_scores_mean + train_scores_std, alpha=0.1,\n",
+        "                         color=\"r\")\n",
+        "    axes[0].fill_between(train_sizes, test_scores_mean - test_scores_std,\n",
+        "                         test_scores_mean + test_scores_std, alpha=0.1,\n",
+        "                         color=\"g\")\n",
+        "    axes[0].plot(train_sizes, train_scores_mean, 'o-', color=\"r\",\n",
+        "                 label=\"Training score\")\n",
+        "    axes[0].plot(train_sizes, test_scores_mean, 'o-', color=\"g\",\n",
+        "                 label=\"Cross-validation score\")\n",
+        "    axes[0].legend(loc=\"best\")\n",
+        "\n",
+        "    # Plot n_samples vs fit_times\n",
+        "    axes[1].grid()\n",
+        "    axes[1].plot(train_sizes, fit_times_mean, 'o-')\n",
+        "    axes[1].fill_between(train_sizes, fit_times_mean - fit_times_std,\n",
+        "                         fit_times_mean + fit_times_std, alpha=0.1)\n",
+        "    axes[1].set_xlabel(\"Training examples\")\n",
+        "    axes[1].set_ylabel(\"fit_times\")\n",
+        "    axes[1].set_title(\"Scalability of the model\")\n",
+        "\n",
+        "    # Plot fit_time vs score\n",
+        "    axes[2].grid()\n",
+        "    axes[2].plot(fit_times_mean, test_scores_mean, 'o-')\n",
+        "    axes[2].fill_between(fit_times_mean, test_scores_mean - test_scores_std,\n",
+        "                         test_scores_mean + test_scores_std, alpha=0.1)\n",
+        "    axes[2].set_xlabel(\"fit_times\")\n",
+        "    axes[2].set_ylabel(\"Score\")\n",
+        "    axes[2].set_title(\"Performance of the model\")\n",
+        "\n",
+        "    return plt\n",
+        "\n",
+        "\n",
+        "fig, axes = plt.subplots(3, 2, figsize=(10, 15))\n",
+        "\n",
+        "title = \"Learning Curves (linear SVC)\"\n",
+        "# Cross validation with 100 iterations to get smoother mean test and train\n",
+        "# score curves, each time with 20% data randomly selected as a validation set.\n",
+        "cv = ShuffleSplit(n_splits=10, test_size=0.2, random_state=0)\n",
+        "\n",
+        "plot_learning_curve(estimator, title, train, Train_Y, axes=axes[:, 0], ylim=(0.7, 1.01),\n",
+        "                    cv=cv, n_jobs=-1)\n",
+        "\n",
+        "plt.show()"
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "Qoeffo58S_ZS",
+        "outputId": "f55ed54c-e83e-4eff-f8fe-bb4c88c36afe"
+      },
+      "source": [
+        "train, test , names = BOW_Hashtag(df_train,df_test)\n",
+        "folds = StratifiedKFold(n_splits = 5, shuffle = True, random_state = 0)\n",
+        "\n",
+        "predictions , svm = finetune_linearsvc(train,Train_Y,test,Test_Y)"
+      ],
+      "execution_count": 28,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "Fitting 5 folds for each of 11 candidates, totalling 55 fits\n"
+          ],
+          "name": "stdout"
+        },
+        {
+          "output_type": "stream",
+          "text": [
+            "[Parallel(n_jobs=-1)]: Using backend LokyBackend with 40 concurrent workers.\n",
+            "[Parallel(n_jobs=-1)]: Done  32 out of  55 | elapsed:    5.0s remaining:    3.6s\n",
+            "[Parallel(n_jobs=-1)]: Done  55 out of  55 | elapsed:    5.2s finished\n"
+          ],
+          "name": "stderr"
+        },
+        {
+          "output_type": "stream",
+          "text": [
+            "training time: 5.61 s\n",
+            "{'C': 0.25}\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "VvFpUPwkFTDT"
+      },
+      "source": [
+        "df_test['Opinion Towards'] = le.fit_transform(df_test['Opinion Towards'])"
+      ],
+      "execution_count": 35,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "mngIlfGXHIH9"
+      },
+      "source": [
+        "df_test['predicted_arguments'] = predictions "
+      ],
+      "execution_count": 36,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "2xGk8n6mHeEC"
+      },
+      "source": [
+        "mask = df_test['predicted_arguments'] == 0"
+      ],
+      "execution_count": 37,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "pJhIdAFcHn4f"
+      },
+      "source": [
+        "argumentative_tweets = df_test.loc[mask]"
+      ],
+      "execution_count": 39,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "zLWRIw5UH0cG"
+      },
+      "source": [
+        "argumentative_tweets.to_pickle('argumentative_tweets.pkl')"
+      ],
+      "execution_count": 43,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "tcrFt9_4Ygr2",
+        "outputId": "84f06734-6d7e-4eaa-94cc-4813ea9b8cd7"
+      },
+      "source": [
+        "train_, test_ = trigram_features(df_train,df_test)\n",
+        "folds = StratifiedKFold(n_splits = 5, shuffle = True, random_state = 0)\n",
+        "\n",
+        "report , svm_ = finetune_linearsvc(train_,Train_Y,test_,Test_Y)"
+      ],
+      "execution_count": 86,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "Fitting 5 folds for each of 11 candidates, totalling 55 fits\n"
+          ],
+          "name": "stdout"
+        },
+        {
+          "output_type": "stream",
+          "text": [
+            "[Parallel(n_jobs=-1)]: Using backend LokyBackend with 40 concurrent workers.\n"
+          ],
+          "name": "stderr"
+        },
+        {
+          "output_type": "stream",
+          "text": [
+            "training time: 0.76 s\n",
+            "{'C': 0.125}\n"
+          ],
+          "name": "stdout"
+        },
+        {
+          "output_type": "stream",
+          "text": [
+            "[Parallel(n_jobs=-1)]: Done  32 out of  55 | elapsed:    0.6s remaining:    0.4s\n",
+            "[Parallel(n_jobs=-1)]: Done  55 out of  55 | elapsed:    0.7s finished\n"
+          ],
+          "name": "stderr"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "S5qT2f8eUjNT"
+      },
+      "source": [
+        "def misclassification(clf,df_test,valid_x):\n",
+        "   #index of misclassifications\n",
+        "   y_pred = clf.predict(valid_x)\n",
+        "   correct = y_pred == Test_Y\n",
+        "   df_test['Classified'] = correct\n",
+        "   classified = df_test[['Tweet','Classified','Target','Hashtag']]\n",
+        "   return classified"
+      ],
+      "execution_count": 104,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "YTuiMSOCYASs"
+      },
+      "source": [
+        "classified = misclassification(svm,df_test,test)\n",
+        "classified_ = misclassification(svm_,df_test,test_)"
+      ],
+      "execution_count": 105,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "SGKMO7mFZDTM"
+      },
+      "source": [
+        "misc_ngram  = classified_.loc[classified_['Classified'] == False]\n",
+        "cc_hash = classified.loc[classified['Classified'] == True]"
+      ],
+      "execution_count": 106,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "1nax2jEeZx3T"
+      },
+      "source": [
+        "corrected_tweets = []\n",
+        "corrected_hashtags = []\n",
+        "for index, row in cc_hash.iterrows():\n",
+        "    for index_,row_ in  misc_ngram.iterrows():\n",
+        "         if row['Tweet'] == row_['Tweet']:\n",
+        "               corrected_tweets.append(row['Tweet']) \n",
+        "               corrected_hashtags.append(row['Hashtag'])        "
+      ],
+      "execution_count": 172,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "C-kahCtob795",
+        "outputId": "db188052-7e8c-401b-9323-0ded35ce97b6"
+      },
+      "source": [
+        "corrected_tweets"
+      ],
+      "execution_count": 174,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "['A Godly husband  - knows you - trusts you - loves you - respects you - honors you - supports you - wants you - appreciates you #God #SemST',\n",
+              " 'These days, the cool kids are atheists.  #freethinker #SemST',\n",
+              " '@dsurman  Jesus is favor of all, that they would believe He died for them. Why try to wage a conflict you will lose? #God #SemST',\n",
+              " 'RT @br_holden: Superstition-based thoughts tend to be wasted thoughts.  #freethinker #SemST',\n",
+              " 'RT @br_holden: Just say no to superstitious thought in general and religions in particular.  #freethinker #SemST',\n",
+              " 'RT @ACatholicPrayer: Holy Trinity, one God, Have #mercy on us. #Catholic #SemST',\n",
+              " 'Join me on #Periscope M-F @ 8am! #Entrepreneurship #Productivity #ChristianEntrepreneurs #SemST',\n",
+              " '#KCA #VoteJKT48ID premierdigi: Are Facebook and Twitter good places to defend your faith? How do you communicate?   #christianity #d... #SemST',\n",
+              " 'Hindus pay for Muslim subsidy for HAJ..but need security from Muslims to visit temples-Amarnath yatra..   #HindusUnderAttack #SemST',\n",
+              " 'What other nation is so great as to have their gods near them the way the Lord our God is near us whenever we pray to him? #Eritrea #SemST',\n",
+              " '@truthway_eng  Jesus commands you to follow Acts 2:38-39 to be saved. #christian #christ #Mary #Bible #church #trinity #usa #uk #aus #SemST',\n",
+              " '@Jaikrishnashree #italianchachi420 UDF/LDF made #Kerala the most backward southern state & cluelss #Hindus keep voting #marxism #SemST',\n",
+              " \"@SaberinZe @TheBricsPost absurd like saying #nato membership will help #Russia #Pakistan is #islamist can't be friend of #india #SemST\",\n",
+              " 'In the big picture, religion is bad for society because it blunts reason.   #freethinker #SemST',\n",
+              " '@MuhammadAli except for your belief in Allah. Gods are imaginary. Love and humanity are real. I love you. Be well and take care. #SemST',\n",
+              " 'AtheistQ \"God\\'s guidance is the only excuse for a man who can\\'t find a better justification for his actions. #SemST',\n",
+              " '2 pretty sisters are dancing with cancered kid   #SemST',\n",
+              " '...a longer memory, and a sterner sense of justice than we do. -W.Berry #SemST',\n",
+              " '5 meta-analyses show 1/2 of species have changed where they live, 2/3 have changed when they live. Camille Parmesan #CFCC15 #SemST',\n",
+              " 'Our cardboard city with @Joshpaulevans from @TearfundRhythms in our @cscw_uk youth club on Monday. #SemST',\n",
+              " 'Dhakal: There is no silver bullet for solutions - each city has to devise own local/specific responses to #CFCC15 #SemST',\n",
+              " 'Adaptation is something that reduces the negative impact or enhances the positive impact of #CFCC15 #Journey2015 #SemST',\n",
+              " 'Participation is essential: bring vulnerable voices to the table at #COP21 says @wjamann #AgCOP21 #CFCC15 @cgiarclimate #SemST',\n",
+              " \"@xrisham Reminds me of Nottingham in the early 1960's #ActOnClimate #SemST\",\n",
+              " 'Why is Stephen Harper or representative not at #costa   Does he not care about the environment?  #cdnpoli #environment #SemST',\n",
+              " 'the water hole time to drink! RT\"@vicenews #SemST',\n",
+              " \"What's next after 2 years? :) #thinkbig #world #solution #water #SemST\",\n",
+              " 'Whole species #Boomers #GenerationX GenerationY #GenZ Needs a vacation. 25 years on a Greek Island anyone? #HumanExtinction #SemST',\n",
+              " 'One thing I learned from my job: doors to opportunity cover fee that only the privileged can afford. #privilege #truth #SemST',\n",
+              " 'just want to give my hair follicles a quick shoutout for giving me armpit hair, cos nout says equality quite like an unused razor #SemST',\n",
+              " 'I thought you would like it @AceofSpades14 #feminist #SemST',\n",
+              " 'We cannot succeed when half of us are held back. Malala Yousafzai #SmartGlamour #feminist #yesallwomen #equality #SemST',\n",
+              " '@mraguyot Yup, way more than I would ever buy, but hey, something for everybody.   #antifeminism #antiSJW #MGTOW #SemST',\n",
+              " \"Other people may hate #feminists, but at least they don't hate the opposite sex.   #feminist #sexism #SemST\",\n",
+              " \"Ayyyy more hypocrisy: Hope Solo, serial domestic abuser is celebrated like a hero for winning the women's World Cup #SemST\",\n",
+              " \"If you're a #feminist it's only because absolutely no one would shove their semi hard cock into you. Let that sink in. #SemST\",\n",
+              " 'YO @kaitlynbristowe YOU GET YOURS GIRL.     #TheBachelorette #SemST',\n",
+              " \"@Deb_Hitchens @JudgeBambi . There's no capacity for discourse when you assume ppl are your enemy. Hate. Misery. Paranoia. A waste. #SemST\",\n",
+              " '@NormaniKordei hi, can u pls rt this people need to know about this!!!!! #feminist #SemST',\n",
+              " '@AllyBrooke hi, can u pls rt this people need to know about this!!!!! #feminist #SemST',\n",
+              " 'To the young woman I stood next to at KL airport. Sorry I did not step in when your partner grabbed, threatened you #YesAllWomen #SemST',\n",
+              " \"Great to see the progress we're all making. May that continue, until this becomes an antiquated issue. #HeForShe #GirlPower #SemST\",\n",
+              " \"@watchyoomouth_ @SCbchbum are you fucking KIDDING ME? so you're saying that justifies rape? #rapeculture #smdh #SemST\",\n",
+              " '#yesallwomen are #always #unstoppable if they cry to get their way #likeagirl   #GamerGate    #SemST',\n",
+              " 'I swear to God... The people who claim to represent Feminism are turning it into a joke. #SJW #feminist  #GuaranteedReactions #SemST',\n",
+              " \"@femfreq I don't understand why all these nerds hate you so much. I would love to do the nasty with you sexy #GamerGate #feminist #SemST\",\n",
+              " \"The more you push me, the more I resist. Don't bother #strongwomen #women #SemST\",\n",
+              " '#Rapeculture is basically a FABLE. It has almost no reason on its side, but plenty of emotion. #rape #women #antifeminism #antiSJW #SemST',\n",
+              " \"@GovtsTheProblem This is what I see: Make way 4 ur queen peasants! Don'ttouch or talk 2 her U filth! #NoHillary2016 #Benghazi  #SemST\",\n",
+              " '@WoodenThreat @incessantpatrio @bcwilliams92 that was fun, but it wont be if we have another FAKE #POTUS #WhyImNotVotingForHillary #SemST',\n",
+              " '@HillarityPress @Amedicinewoman 1.Food: #Benghazi 4 NeverAteAgain 2.Weather: #Benghazi WasFireHot 3.Pets: #Benghazi 4PetsMissThem #SemST',\n",
+              " \"The recent comments of #HillaryClinton sounded like it was #Netanyahu speaking. Doesn't bode well. #SemST\",\n",
+              " 'Wait...... you said \"BILL COSBY?\"  Oh, I\\'m sorry, I thought you said \"BILL CLINTON!\"  #uniteblue #ReadyForHillary #SemST',\n",
+              " '@TGowdySC Your committee has NOTHING!, 4 other committees found NOTHING! UR wasting our money on a witch hunt. #HillaryClinton #SemST',\n",
+              " 'While I like Bernie as much as the next liberal, if we nominate him we could actually lose to some RWNJ #SemST',\n",
+              " '@SenSanders bashes Obama job numbers.Calling it a lie. #istandwithPresidentObama #VoteBlue2016 #HillaryClinton #Democrats #SemST',\n",
+              " \"It's time that we move from good words to good works, from sound bites to sound solutions.--@HillaryClinton #ReadyForHillary #SemST\",\n",
+              " '#HillaryClinton just cannot accept the fact that #America does not like her. #HillaryonCNN #BernieSanders #SemST',\n",
+              " \"@CNN @jimsciutto Good i'view #Brianna. #Hillary NOT responsible 4 slander/libel-lies r indefensible. WILL be next #POTUS. #SemST\",\n",
+              " \"Trying 2 unfollow every twit who isn't going 2 vote if their candidate doesn't make it to the general.  #FeelTheBern   #SCOTUS #SemST\",\n",
+              " '@HillaryClinton Will #BillClinton assault #MonicaLewinsky on her birthday? #liberals #HillaryClinton #SemST',\n",
+              " '@JedediahBila u must be counting the lies like sheep ..... #SemST',\n",
+              " '@DesireeAaron @HillaryClinton  Sheets Clinton Ya got to love it #HillaryonCNN #HillaryClinton #SemST',\n",
+              " '@HillaryClinton Wow, #HillaryClinton looks very fat in that pants suit. #liberals #tlot #Democrats #SemST',\n",
+              " '@realDonaldTrump has my vote! The truth will set you free and we need transparency in Washington now more than ever! #SemST',\n",
+              " \"@_Holly_Renee I want to fav this tweet....cause it's hilarious. But I give no support to #HillaryClinton #SemST\",\n",
+              " 'GOP Busted Trey Gowdy proved their #Benghazi hearings are politically motivated when he leaked documents to the press  #SemST',\n",
+              " \"hey @HillaryClinton when you LIED about the lack of a subpoena...you REALLY thought you wouldn't get caught? #LIAR #Corruptocrat #SemST\",\n",
+              " '@HillaryClinton lies just for the fun of it, its CRAZY!!!!! #NoHillary #WhyImNotVotingForHillary #SemST',\n",
+              " '@rhhhhh380 What we need to do is support all Republicans and criticize the opposition. #SemST',\n",
+              " '@Westxgal @irisflower33: This money will buy the Anti-American Libs including #SemST',\n",
+              " '@lylafmills Simple. A revolution Two Independence Days And a clean slate. #2ndamendment #REMEMBERBENGHAZI2016 #PATRIOTSWILLRISE #SemST',\n",
+              " \"Wouldn't be surprise that it comes to light that Chelsea's husband cheats on her. #HillaryClinton #SemST\",\n",
+              " 'we must always see others as Christ sees us,we must see God in all things&remeber 2 look past sin #RomanCatholic #SemST',\n",
+              " '@prolife_wife You can say that again! #AbortionIsMurder #AllLivesMatter #ProLifeYouth #SemST',\n",
+              " 'How many location-efficient, #affordablehousing units could the NYC metro (pop. 23M) create if it built over all of its cemeteries? #SemST',\n",
+              " '@Stephen_C_Ward  What are they doing with acid signs oh yeah their all tripping #lsd  #SemST',\n",
+              " '@Mediaite @CNN where is #SilencedDiscourse for @TheDemocrats questions on #Divisions #SchoolChoice #Taxes #DoubleStandard #Biased #SemST',\n",
+              " '@paradiselost_17 @ArguDaz @Brainman365 @PolarVan @yetigcreature Yes, an occasional hypocrite. I support #MarriageEquaility & abhor #SemST',\n",
+              " \"@ShowTruth YOU CAN'T HANDLE THE TRUTH! People will always do it no matter the laws. #letdoctorsdoit #SemST\",\n",
+              " 'The teen pregnancy rate has declined 51 percent, and the teen birth rate is down 57 percent. #SemST',\n",
+              " '@notmuchelse & purely physical enjoyment with no responsibility attached #SemST',\n",
+              " '@HillaryClinton #gop as whole party has backwards ideas on #immigration #votingrights #womensright #civilrights. #healthcare #dapa #SemST',\n",
+              " 'Lord Jesus,Touch my life with your saving power, heal and restore me to      fullnessof life. #SemST',\n",
+              " '@2014voteblue @ChrisJZullo blindly supporting political parties is willfull ignorance, repub or dem. #SemST',\n",
+              " \"RT @Tone_Rowdy: How can this country move on from its racist past when it's leaders won't... #OurLivesMatter #SemST\",\n",
+              " 'Isis celebrates Islam with 3 terror attacks overseas. BO wants 2 disarm Americans so Isis can mow us down at will. #tcot #SemST',\n",
+              " '@kilmeade @briankilmeade Obviously military industrial complex has an interest in sustained conflict War=sales #Libertarian #SemST',\n",
+              " \"So gays can get married, but I still can't legally own a pet monkey in the USA -.- #thisiswhatswrongwiththeworld #SemST\",\n",
+              " '@JonathanHoenig Why arent Americans allowed WEEKLY to vote on Bills that are passed by the elite on behalf of the masses? #SemST',\n",
+              " '@docweiser01 @ericbolling @JonathanHoenig @MichelleFields Morning Doc! (hugs) #SemST',\n",
+              " '@SCOTUScare penned by @ChiefJusticeJR  ends rule of law and freedom. What law will SCOTUS  edit next? @RedNationRising #SemST',\n",
+              " \"Under O & Kerry's deal, if the ayatollahs want to keep their nuclear toys  they can keep their nuclear toys! PERIOD! #SemST\",\n",
+              " 'Why does O refer to Iran, Hamas, Ebola, and ISIS in dramatically less critical terms than he does Republicans?\" #tcot #SemST',\n",
+              " '@inmatemd @ChuckNellis @Oh_MarieLoDuca We can only hope #SemST',\n",
+              " 'The whole Latino community will not be voting for #SemST',\n",
+              " \"RT @_CFJ_: RT @bcwilliams92 Let's get this CLEAR! I DID NOT I REPEAT DID NOT vote on TPP  ~ Ted Cruz #CruzCrew... #SemST\",\n",
+              " 'all #war is on YOU! The evil machine WANTS to control U. #tcot #tlot #dems #teaparty #occupy  #cdnpoli #privacy #Love #art #SemST',\n",
+              " 'Reminder: DemocRATs STOLE  $716 Billion from Medicare f/ the elderly & gave it to Medicaid to help pay for #Obamacare. #SemST',\n",
+              " 'Is #Greece waking up to the disaster of #Socialism and a world without borders? #SemST',\n",
+              " \"I believe this September's blood moon portends a cataclysmic event. #Christians  #SemST\",\n",
+              " \"America: Isn't it time we ignored Donald Trump? He's not a serious person. @NYPD should revoke his gun permit. #Immigration #NBC #SemST\",\n",
+              " \"Hey at @realDonaldTrump I'll vote for you if you adopt me! #SemST\",\n",
+              " 'OBAMA LISTENING TO RAP \"MUSIC\" IN THE WHITE HOUSE IS A DISGRACE. YOU CAN\\'T SPELL CRAP WITHOUT RAP. #tcot #NoBama #SemST',\n",
+              " \"@TPM Forget #AnnCoulter. Faux's #Hannity & #KellyFile have an endless supply of ignorant #GOP summer interns. #RWNJ #tcot #SemST\",\n",
+              " 'Radical Islam is still a threat to the Western World!!!! #awareness #PATRIOT #UnitedWeStand #SemST',\n",
+              " \"I'm voting for Donald Trump ! #SemST\",\n",
+              " 'RT brutaltruth2682: Radical Islam is still a threat to the Western World!!!! #awareness #PATRIOT #UnitedWeStand #SemST',\n",
+              " \"Honestly though @Macys you dumped Trump so now I'm dumping you. And I shop at your store A LOT. NOT ANYMORE BYE #SemST\",\n",
+              " 'Oreo frappie from Mcdonalds is the morning beverage of Champions.#wakeandbake #McDonalds #SemST',\n",
+              " '5. Obama could kill us all with these race wars and black lives matters stuff. Divide and Conquer. #tcot #SemST',\n",
+              " 'Mexico sucks. What other conclusion is there for ppl to come here illegally?   #Mexico #SemST',\n",
+              " \"@usnavyjack @RNC When RNC calls, ask them to prove they're conservative. They can't and you'll enjoy it. #RNC #GOP #tcot #SemST\",\n",
+              " '@realDonaldTrump the left should get off your back!  By the LAW anyone that crosses the border illegally is a criminal.  #SemST',\n",
+              " '@HomerWhite @BeauCards Illegal!!!!!   DOJ,AG,law enforcement  Hello anyone!!!!!!  #SemST',\n",
+              " \"@DaGodfather907 @dare6626  Hope the rotten SOB don't choke :( #SemST\",\n",
+              " '@JVER1 @tgradous @LVNancy  I blame her death on the @potus he is directly responsible. He is pathetic. If i were her dad.... #SemST',\n",
+              " '@blackrepublican only if we stop allowing them 2 work & stop welfare they will self-deport #tcot #SemST',\n",
+              " 'What happens first? Yellowstone blows or GOP prez candidate calls Trump racist? #SemST',\n",
+              " 'Have you noticed how often the concept of \"living within your means\" is now described as \"ruthless austerity?\"#tcot #SemST',\n",
+              " 'With his immigration policies pwr drunk #Obama is setting himself up 2 b prez of Mex when he gets evicted from WH  #tcot #SemST',\n",
+              " 'OMG - #Obama really believes #ISIS is made up of Christians, Jews, & Muslims. WHAT A MORON! #clueless #ProudAmerican #tcot #SemST',\n",
+              " '@realDonaldTrump is the only candidate who has in no way, shape or form been brainwashed by the pc police. #SemST',\n",
+              " 'I get SO HEATED seeing treasonous libtards defending Ed Snowden. He is a TRAITOR and should be hung. #tcot #tlot #ccot #SemST',\n",
+              " '#greta Trump is absolutely on fire right now! He is a good man with a great family. He is the medicine this country needs! #SemST',\n",
+              " \"#Boycott @TravelOregon Support @sweetcakesbakes If you don't want to bake the cake, you shouldn't be forced to. #freedom #SemST\",\n",
+              " '@RNRLouisiana @willie_mays24 @RNROklahoma  THIS kind of open defiance is what is needed but on a massive scale #tcot #LNYHBT #SemST',\n",
+              " \"The .@nyse doesn't just halt all trades ... What's up #grexit #ChinaMeltdown #tcot #nationaldebt #SemST\",\n",
+              " 'Federal funds are cutoff if states dont bend to blood alcohol laws.Why should #sanctuarycities be different? #WhiteGenocide #tcot #SemST',\n",
+              " '@seanhannity Rick Santorum Quit talking like a politician get mad the AMERICAN PEOPLE are MAD as hell #SemST']"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 174
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "0BHWy8a3dfcF"
+      },
+      "source": [
+        "from sklearn.feature_selection import SelectFromModel"
+      ],
+      "execution_count": 109,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "hoSoliZccNjK"
+      },
+      "source": [
+        "# sel = SelectFromModel(svm,prefit=True)\n",
+        "# sel.transform(train)\n",
+        "features = np.reshape(names, (-1, 1))\n",
+        "\n",
+        "best_features = pd.DataFrame({ 'Rank': svm.coef_[0],\n",
+        "                               'vectors': names})"
+      ],
+      "execution_count": 153,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "rv1gemKYdWuk"
+      },
+      "source": [
+        "def f_importances(coef, names):\n",
+        "    imp = coef[0]\n",
+        "    imp,names = zip(*sorted(zip(imp,names)))\n",
+        "    plt.barh(range(len(names)), imp, align='center')\n",
+        "    plt.yticks(range(len(names)), names)\n",
+        "    plt.show()\n"
+      ],
+      "execution_count": 157,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "5lel-F8LjAqC"
+      },
+      "source": [
+        "best = best_features.sort_values(by='Rank',ascending=False)"
+      ],
+      "execution_count": 160,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 979
+        },
+        "id": "TCJ9V8_GjIoH",
+        "outputId": "3275b05d-be17-4886-8b2e-3732c4b92f4d"
+      },
+      "source": [
+        "best.head(30)"
+      ],
+      "execution_count": 163,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>Rank</th>\n",
+              "      <th>vectors</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>25681</th>\n",
+              "      <td>0.377624</td>\n",
+              "      <td>peace</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>40969</th>\n",
+              "      <td>0.346278</td>\n",
+              "      <td>islam</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>41610</th>\n",
+              "      <td>0.339532</td>\n",
+              "      <td>scotusmarriage</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>24897</th>\n",
+              "      <td>0.329248</td>\n",
+              "      <td>one hope</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>20913</th>\n",
+              "      <td>0.325987</td>\n",
+              "      <td>love</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>40109</th>\n",
+              "      <td>0.325732</td>\n",
+              "      <td>abortionondemand</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>41171</th>\n",
+              "      <td>0.325732</td>\n",
+              "      <td>menstruationmatters</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>37717</th>\n",
+              "      <td>0.311009</td>\n",
+              "      <td>watch</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>34780</th>\n",
+              "      <td>0.306750</td>\n",
+              "      <td>things</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>24354</th>\n",
+              "      <td>0.305407</td>\n",
+              "      <td>nothing done</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>19466</th>\n",
+              "      <td>0.304806</td>\n",
+              "      <td>least</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>28721</th>\n",
+              "      <td>0.286841</td>\n",
+              "      <td>reason</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>41153</th>\n",
+              "      <td>0.282297</td>\n",
+              "      <td>marriageequaility</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>40345</th>\n",
+              "      <td>0.280876</td>\n",
+              "      <td>centerhitler</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>40733</th>\n",
+              "      <td>0.271224</td>\n",
+              "      <td>gaymarriage</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>8023</th>\n",
+              "      <td>0.265851</td>\n",
+              "      <td>debate</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>40223</th>\n",
+              "      <td>0.263344</td>\n",
+              "      <td>baltimoreriots</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>34449</th>\n",
+              "      <td>0.261847</td>\n",
+              "      <td>thank much</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>31160</th>\n",
+              "      <td>0.258578</td>\n",
+              "      <td>seriously</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>35827</th>\n",
+              "      <td>0.253706</td>\n",
+              "      <td>trigger</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>35851</th>\n",
+              "      <td>0.251393</td>\n",
+              "      <td>troll</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>22084</th>\n",
+              "      <td>0.249937</td>\n",
+              "      <td>maybe woman president</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>22083</th>\n",
+              "      <td>0.249937</td>\n",
+              "      <td>maybe woman</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>36089</th>\n",
+              "      <td>0.245319</td>\n",
+              "      <td>turning</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>40510</th>\n",
+              "      <td>0.242668</td>\n",
+              "      <td>diversity</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>10954</th>\n",
+              "      <td>0.234031</td>\n",
+              "      <td>experience</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>7030</th>\n",
+              "      <td>0.232368</td>\n",
+              "      <td>cost election</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>11571</th>\n",
+              "      <td>0.228532</td>\n",
+              "      <td>feel</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>40296</th>\n",
+              "      <td>0.225583</td>\n",
+              "      <td>bristolpalin</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>20495</th>\n",
+              "      <td>0.224566</td>\n",
+              "      <td>live peace</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "           Rank                vectors\n",
+              "25681  0.377624                  peace\n",
+              "40969  0.346278                  islam\n",
+              "41610  0.339532         scotusmarriage\n",
+              "24897  0.329248               one hope\n",
+              "20913  0.325987                   love\n",
+              "40109  0.325732       abortionondemand\n",
+              "41171  0.325732    menstruationmatters\n",
+              "37717  0.311009                  watch\n",
+              "34780  0.306750                 things\n",
+              "24354  0.305407           nothing done\n",
+              "19466  0.304806                  least\n",
+              "28721  0.286841                 reason\n",
+              "41153  0.282297      marriageequaility\n",
+              "40345  0.280876           centerhitler\n",
+              "40733  0.271224            gaymarriage\n",
+              "8023   0.265851                 debate\n",
+              "40223  0.263344         baltimoreriots\n",
+              "34449  0.261847             thank much\n",
+              "31160  0.258578              seriously\n",
+              "35827  0.253706                trigger\n",
+              "35851  0.251393                  troll\n",
+              "22084  0.249937  maybe woman president\n",
+              "22083  0.249937            maybe woman\n",
+              "36089  0.245319                turning\n",
+              "40510  0.242668              diversity\n",
+              "10954  0.234031             experience\n",
+              "7030   0.232368          cost election\n",
+              "11571  0.228532                   feel\n",
+              "40296  0.225583           bristolpalin\n",
+              "20495  0.224566             live peace"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 163
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 390
+        },
+        "id": "WXCD1-22ldEX",
+        "outputId": "978e846b-86c2-4c0d-f3c6-1e58294e9481"
+      },
+      "source": [
+        "imp,names = zip(*sorted(zip(best['Rank'].iloc[:20],best['vectors'].iloc[:20])))\n",
+        "plt.figure(figsize=(5,6))\n",
+        "plt.barh(range(len(names)), imp, align='center')\n",
+        "plt.yticks(range(len(names)), names)\n",
+        "\n",
+        "plt.title('The Top 20 features Measured by Linear SVC Coefficient Value')\n",
+        "plt.show()"
+      ],
+      "execution_count": 170,
+      "outputs": [
+        {
+          "output_type": "display_data",
+          "data": {
+            "image/png": "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\n",
+            "text/plain": [
+              "<Figure size 360x432 with 1 Axes>"
+            ]
+          },
+          "metadata": {
+            "tags": [],
+            "needs_background": "light"
+          }
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "G78I6LBNnKAi"
+      },
+      "source": [
+        ""
+      ],
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
